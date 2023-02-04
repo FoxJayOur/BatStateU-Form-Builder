@@ -1,20 +1,211 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="handleScroll($any($event))">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">First Personal Portfolio</ion-title>
     </ion-toolbar>
   </ion-header>
+  <nav class="navitab">
+    <div class ="maxwidth">
+      <div class ="logo"><a href = "#"><img src="../../assets/imgs/BatStateU-NEU-Logo.png" style="width: 32px; height: 29px;">B.<span> Formana.</span></a></div>
+        <ul class = "opt">
+          <li><a href="#">Home</a></li>
+          <li><a href="#" [routerLink]="['/login']">Formana</a></li>
+        </ul>
+          <div class ="opt-btn">
+            <i class="fa fa-bars"></i>
+          </div>
+    </div>
+  </nav>
+  <section class="home" id="home">
+    <div class="maxwidth">
+      <div class="home-content">
+        <div class="text-1">Hello, our team presents </div>
+        <div class="text-2">Formana</div>
+        <div class="text-3">BatStateU Official<span> Form</span></div>
+        <a href = "#">Download</a>
+        <a href = "#" [routerLink]="['/login']">Go to site</a>
+      </div>
+    </div>
+  </section>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <section class="about" id="about">
+    <div class="maxwidth">
+      <h2 class="title">About</h2>
+      <div class="about-content">
+        <div class="column left">
+          <img src="../../assets/imgs/AboutUsPic2.png" alt="">
+        </div>
+        <div class="column right">
+          <div class="text">Formana's purpose</div>
+          <div class="text1">With the frequent surveying and collection of data and information from individuals on campus, it is inevitable to create multiple forms having the same purpose. With this project, it aims to lessen the creation of multiple forms with the same agenda. Its target is to save the data collected in one single database that is accessible to all administrators unlike in other platforms where only the creator of the form is able to access the results. In this way, retrieval of information will be way easier and replication of survey results will be lessened. <br> <br> This application is developed in order to make it more convenient for the students and administrators in collecting needed information. The application offers the feature to make customized form templates which will suit their objective. Along with this, pre-made templates will also be available which can serve as basis in form creation. 
+            <br> <br> Formana will be implemented through a web application and mobile application. The mobile application will be accessible for the student users, this is where they will be able to preview and answer the forms they are targeted to respond to. On the other hand, the web application will contain a dashboard and will mostly be for administrator use. 
+          </div>
+            <a href="#">Josh</a>
+            <a href="#">Blessy</a>
+            <a href="#">Ella</a>
+            <a href="#">Patrick</a>
+            <a href="#">Adriel</a>
+            <a href="#">Ivan</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="maxwidth">
+      <h2 class="title">Our features</h2>
+        <div class="features-content">
+          <div class="feats">
+            <div class="box">
+              <i class="fa fa-newspaper-o"></i>
+              <div class="text">Form Custom Creation</div>
+            </div>
+          </div>
+          <div class="feats">
+            <div class="box">
+              <i class="fa fa-address-card-o"></i>
+                <div class="text">Easy Personalization and Usage</div>
+            </div>
+          </div>
+          <div class="feats">
+            <div class="box">
+              <i class="fa fa-archive"></i>
+              <div class="text">Secure Data Hashing and Database</div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="documentation" id="documentation">
+    <div class="maxwidth">
+      <h2 class="title">Our Documentation</h2>
+      <div class="documentation-content">
+        <div class="column left">
+          <div class="text">Documentation introduction and webpage</div>
+          <p style="color: #fff;">As collected deficient objection by it discovery sincerity curiosity. Quiet decay who round three world whole has mrs man. Built the china there tried jokes which gay why. Assure in adieus wicket it is. But spoke round point and one joy. Offending her moonlight men sweetness see unwilling. Often of it tears whole oh balls share an.</p>
+          <a href="#">Go to webpage</a>
+        </div>
+        <div class="column right">
+          <div class="bars">
+            <div class="info">
+              <span>Installation</span>
+              <span>1</span>
+            </div>
+            <div class="line ins"></div>
+          </div>
+          <div class="bars">
+            <div class="info">
+              <span>Account Creation</span>
+              <span>2</span>
+            </div>
+            <div class="line acc"></div>
+          </div>
+          <div class="bars">
+            <div class="info">
+              <span>Functions</span>
+              <span>3</span>
+            </div>
+            <div class="line fun"></div>
+          </div>
+          <div class="bars">
+            <div class="info">
+              <span>Roadmap</span>
+              <span>4</span>
+            </div>
+            <div class="line rmp"></div>
+          </div>
+          <div class="bars">
+            <div class="info">
+              <span>And more...</span>
+              <span>...</span>
+            </div>
+            <div class="line tre"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="team" id="team">
+    <div class="maxwidth">
+      <h2 class="title" style="color: black;">Our Team</h2>
+      <div class="carousel owl-carousel">
+        <div class="card">
+          <div class="box">
+            <img src="../../assets/imgs/JoshPic.jpg" alt="">
+            <div class="text">Josh</div>
+            <p>Project Manager</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="box">
+            <img src="../../assets/imgs/PatrickPic.jpg" alt="">
+            <div class="text">Patrick</div>
+            <p>Analyst</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="box">
+            <img src="../../assets/imgs/BlessyPic.png" alt="">
+            <div class="text">Blessy</div>
+            <p>Programmer</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="box">
+            <img src="../../assets/imgs/IvanPogi.jpg" alt="">
+            <div class="text">Ivan</div>
+            <p>Designer</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="box">
+            <img src="../../assets/imgs/EllaPic.jpg" alt="">
+            <div class="text">Ella</div>
+            <p>Documentation</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="box">
+            <img src="../../assets/imgs/AdrielPic.png" alt="">
+            <div class="text">Adriel Joshua</div>
+            <p>Documentation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="maxwidth">
+      <div class="contact-content">
+        <div class="card1">
+          <div class="text">20-00838 <br> 20-00838@g.batstate-u.edu.ph <br> 149 Atienza St. Brgy. Bagong Pook, San Pablo, Laguna
+          </div>
+        </div>
+        <div class="card2">
+          <div class="text">20-03414 <br> 20-03414@g.batstate-u.edu.ph <br> Address
+          </div>
+        </div>
+        <div class="card3">
+          <div class="text">20-43424 <br> 20-43424@g.batstate-u.edu.ph <br> address
+          </div>
+        </div>
+        <div class="card4">
+          <div class="text">20-04529 <br> 20-04529@g.batstate-u.edu.ph <br> Address
+          </div>
+        </div>
+        <div class="card5">
+          <div class="text">20-99331 <br> 20-99331@g.batstate-u.edu.ph <br> Address
+          </div>
+        </div>
+        <div class="card6">
+          <div class="text">20-12930 <br> 20-12930@g.batstate-u.edu.ph <br> Address
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </ion-content>

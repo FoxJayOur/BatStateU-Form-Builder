@@ -31,7 +31,7 @@
               }
             ],
             "styles": ["src/theme/variables.scss", "src/global.scss"],
-            "scripts": [],
+            "scripts": ["node_modules/jquery/dist/jquery.min.js"], 
             "aot": false,
             "vendorChunk": true,
             "extractLicenses": false,
@@ -97,7 +97,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "styles": [],
-            "scripts": [],
+            "scripts": ["node_modules/jquery/dist/jquery.min.js"],
             "assets": [
               {
                 "glob": "favicon.ico",
@@ -148,7 +148,8 @@
   "cli": {
     "schematicCollections": [
       "@ionic/angular-toolkit"
-    ]
+    ],
+    "analytics": false
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {

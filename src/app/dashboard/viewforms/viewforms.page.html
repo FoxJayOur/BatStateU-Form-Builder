@@ -1,0 +1,193 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <nav class="navitab">
+    <div class ="maxwidth">
+      <div class ="logo"><img src="../../assets/imgs/BatStateU-NEU-Logo.png">
+      <img src="../../../assets/imgs/frmn logo 2.png" alt="">
+      </div>
+      <div class="logo2">
+        <a href="#" [routerLink]="['/news']">FORMANA</a>
+        <a href="#" [routerLink]="['/dashboard']">DASHBOARD</a>
+      </div>
+        <ul class = "opt">
+          <li><a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+          <li><a href="#" [routerLink]="['/login']"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+        </ul>
+          <div class ="opt-btn">
+            <i class="fa fa-bars"></i>
+          </div>
+    </div>
+  </nav>
+  <div class="body">
+    <div class="column left">
+        <div class="myForms">
+            <a href="#" [routerLink]="['/dashboard/myforms']">My Forms</a><br>
+        </div>
+        <div class="createForms">
+            <a href="#" [routerLink]="['/dashboard/createforms']">Create Forms</a><br>
+        </div>
+        <div class="viewOtherForms">
+            <a href="#" [routerLink]="['/dashboard/viewforms']">View All Forms</a><br>
+        </div>
+        <div class="viewRatings">
+            <a href="#" [routerLink]="['/dashboard/viewratings']">View Ratings</a>
+        </div>
+    </div>
+    <div class="features">
+      <div class="features-content">
+        <div class="feats">
+          <div class="box">
+            <i class="fa fa-archive"></i>
+            <div class="text">
+              <button id="open-modal" type="button">Theme 1</button>
+                <ion-modal trigger="open-modal">
+                  <ng-template>
+                    <ion-content class="ion-padding">
+                      <ion-item>
+                        <ion-label position="stacked" style="font-size: 25px; font-family:'Times New Roman', sans-serif">Answer Form?</ion-label>
+                      </ion-item>
+                      <label for="wtitle" style="padding-top: 10px;">Title</label><br>
+                      <ion-input [(ngModel)]="wtitle" type="text" placeholder="Enter your wanter form title" id="wtitle"
+                      style="background-color: rgb(184, 184, 184);"></ion-input>
+                      <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+                        <button type="button" (click)="findTitle()" style="background-color: rgb(70, 70, 234);
+                        border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                        Find<ion-ripple-effect></ion-ripple-effect></button>
+                      </div>
+                    </ion-content>
+                  </ng-template>
+                </ion-modal>
+            </div>
+          </div>
+        </div>
+        <div class="feats">
+          <div class="box">
+            <i class="fa fa-archive"></i>
+              <div class="text">
+                <button id="open-modal" type="button">Theme 2</button>
+                <ion-modal trigger="open-modal">
+                  <ng-template>
+                    <ion-content class="ion-padding">
+                      <ion-item>
+                        <ion-label position="stacked" style="font-size: 25px; font-family:'Times New Roman', sans-serif">Answer Form?</ion-label>
+                      </ion-item>
+                      <label for="wtitle" style="padding-top: 10px;">Title</label><br>
+                      <ion-input [(ngModel)]="wtitle" type="text" placeholder="Enter your wanter form title" id="wtitle"
+                      style="background-color: rgb(184, 184, 184);"></ion-input>
+                      <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+                        <button type="button" (click)="findTitle()" style="background-color: rgb(70, 70, 234);
+                        border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                        Find<ion-ripple-effect></ion-ripple-effect></button>
+                      </div>
+                    </ion-content>
+                  </ng-template>
+                </ion-modal>
+              </div>
+          </div>
+        </div>
+        <div class="feats">
+          <div class="box">
+            <i class="fa fa-archive"></i>
+            <div class="text">
+              <button id="open-modal2" type="button">Theme 3</button>
+                <ion-modal trigger="open-modal2">
+                  <ng-template>
+                    <ion-content class="ion-padding">
+                      <ion-item>
+                        <ion-label position="stacked" style="font-size: 25px; font-family:'Times New Roman', sans-serif">Answer Form?</ion-label>
+                      </ion-item>
+                      <label for="wtitle" style="padding-top: 10px;">Title</label><br>
+                      <ion-input [(ngModel)]="wtitle" type="text" placeholder="Enter your wanter form title" id="title"
+                      style="background-color: rgb(184, 184, 184);"></ion-input>
+                      <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+                        <button type="button" (click)="findTitle()" style="background-color: rgb(70, 70, 234);
+                        border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                        Find<ion-ripple-effect></ion-ripple-effect></button>
+                      </div>
+                    </ion-content>
+                  </ng-template>
+                </ion-modal>
+            </div>
+          </div>
+        </div>
+        <div class="feats">
+          <div class="box">
+            <i class="fa fa-archive"></i>
+            <div class="text">
+              <button id="open-modal" type="button">Theme 4</button>
+                <ion-modal trigger="open-modal">
+                  <ng-template>
+                    <ion-content class="ion-padding">
+                      <ion-item>
+                        <ion-label position="stacked" style="font-size: 25px; font-family:'Times New Roman', sans-serif">Answer Form?</ion-label>
+                      </ion-item>
+                      <label for="wtitle" style="padding-top: 10px;">Title</label><br>
+                      <ion-input [(ngModel)]="wtitle" type="text" placeholder="Enter your wanter form title" id="wtitle"
+                      style="background-color: rgb(184, 184, 184);"></ion-input>
+                      <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+                        <button type="button" (click)="findTitle()" style="background-color: rgb(70, 70, 234);
+                        border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                        Find<ion-ripple-effect></ion-ripple-effect></button>
+                      </div>
+                    </ion-content>
+                  </ng-template>
+                </ion-modal>
+            </div>
+          </div>
+        </div>
+        <div class="feats">
+          <div class="box">
+            <i class="fa fa-archive"></i>
+              <div class="text">
+                <button id="open-modal" type="button">Theme 5</button>
+                <ion-modal trigger="open-modal">
+                  <ng-template>
+                    <ion-content class="ion-padding">
+                      <ion-item>
+                        <ion-label position="stacked" style="font-size: 25px; font-family:'Times New Roman', sans-serif">Answer Form?</ion-label>
+                      </ion-item>
+                      <label for="wtitle" style="padding-top: 10px;">Title</label><br>
+                      <ion-input [(ngModel)]="wtitle" type="text" placeholder="Enter your wanter form title" id="wtitle"
+                      style="background-color: rgb(184, 184, 184);"></ion-input>
+                      <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+                        <button type="button" (click)="findTitle()" style="background-color: rgb(70, 70, 234);
+                        border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                        Find<ion-ripple-effect></ion-ripple-effect></button>
+                      </div>
+                    </ion-content>
+                  </ng-template>
+                </ion-modal>
+              </div>
+          </div>
+        </div>
+        <div class="feats">
+          <div class="box">
+            <i class="fa fa-archive"></i>
+            <div class="text">
+              <button id="open-modal" type="button">Theme 6</button>
+                <ion-modal trigger="open-modal">
+                  <ng-template>
+                    <ion-content class="ion-padding">
+                      <ion-item>
+                        <ion-label position="stacked" style="font-size: 25px; font-family:'Times New Roman', sans-serif">Answer Form?</ion-label>
+                      </ion-item>
+                      <label for="wtitle" style="padding-top: 10px;">Title</label><br>
+                      <ion-input [(ngModel)]="wtitle" type="text" placeholder="Enter your wanter form title" id="wtitle"
+                      style="background-color: rgb(184, 184, 184);"></ion-input>
+                      <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+                        <button type="button" (click)="findTitle()" style="background-color: rgb(70, 70, 234);
+                        border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                        Find<ion-ripple-effect></ion-ripple-effect></button>
+                      </div>
+                    </ion-content>
+                  </ng-template>
+                </ion-modal>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

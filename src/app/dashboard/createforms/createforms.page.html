@@ -1,0 +1,81 @@
+<ion-header>
+</ion-header>
+
+<ion-content>
+  <nav class="navitab">
+    <div class ="maxwidth">
+      <div class ="logo"><img src="../../assets/imgs/BatStateU-NEU-Logo.png">
+      <img src="../../../assets/imgs/frmn logo 2.png" alt="">
+      </div>
+      <div class="logo2">
+        <a href="#" [routerLink]="['/news']">FORMANA</a>
+        <a href="#" [routerLink]="['/dashboard']">DASHBOARD</a>
+      </div>
+        <ul class = "opt">
+          <li><a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+          <li><a href="#" [routerLink]="['/login']"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+        </ul>
+          <div class ="opt-btn">
+            <i class="fa fa-bars"></i>
+          </div>
+    </div>
+  </nav>
+  <div class="body">
+    <div class="column left">
+        <div class="myForms">
+            <a href="#" [routerLink]="['/dashboard/myforms']">My Forms</a><br>
+        </div>
+        <div class="createForms">
+            <a href="#" [routerLink]="['/dashboard/createforms']">Create Forms</a><br>
+        </div>
+        <div class="viewOtherForms">
+            <a href="#" [routerLink]="['/dashboard/viewforms']">View All Forms</a><br>
+        </div>
+        <div class="viewRatings">
+            <a href="#" [routerLink]="['/dashboard/viewratings']">View Ratings</a>
+        </div>
+    </div>
+    <div class="features">
+      <div class="features-content">
+        <div class="feats">
+          <a href="#" [routerLink]="['/dashboard/formbuild']" style="text-decoration: none;">
+          <div class="box">
+            <i class="fa fa-archive"></i>
+            <div class="text">Theme 1</div>
+          </div>
+          </a>
+        </div>
+        <div class="feats">
+          <div class="box">
+            <i class="fa fa-archive"></i>
+              <div class="text">Theme 2</div>
+          </div>
+        </div>
+        <div class="feats">
+          <div class="box">
+            <i class="fa fa-archive"></i>
+            <div class="text">Theme 3</div>
+          </div>
+        </div>
+        <div class="feats">
+          <div class="box">
+            <i class="fa fa-archive"></i>
+            <div class="text">Theme 4</div>
+          </div>
+        </div>
+        <div class="feats">
+          <div class="box">
+            <i class="fa fa-archive"></i>
+              <div class="text">Theme 5</div>
+          </div>
+        </div>
+        <div class="feats">
+          <div class="box">
+            <i class="fa fa-archive"></i>
+            <div class="text">Theme 6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+ion-content{
+  --background: #fff url('../../../assets/imgs/bsu background.png') no-repeat center center / cover;;
+  font-family: 'Poppins', sans-serif;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.maxwidth {
+    max-width: 1300;
+    padding: 0 80px;
+    margin: auto;
+}
+.navitab {
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    background: rgba(158,0,0,255);
+    transition: all 0.3s ease-in-out;
+    padding: 10px 0;
+}
+.navitab.sticky {
+    padding: 0px 0;
+    background: none;
+}
+.navitab .maxwidth {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navitab .logo img{
+    height: 50px; width: 55px;
+    margin-right: 30px;
+}
+.navitab .logo2 a{
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    margin-right: 25px;
+    transition: color 0.3 ease;
+    color: #fff;
+}
+.navitab .logo2 a:hover{
+    color: #560000;
+
+}
+.navitab .opt li {
+    list-style: none;
+    display: inline-block;
+    color: black;
+    text-align: center;
+}
+.navitab .opt li a{
+    color: #fff;
+    font-size: 30px;
+    padding-left: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    margin-left: 25px;
+    transition: color 0.3 ease;
+    text-decoration: none;
+}
+.navitab .opt li a:hover{
+    color: #560000;
+    text-decoration: none;
+}
+.navitab.sticky .opt li a:hover{
+    color: #560000; 
+}
+.opt-btn {
+    color: #560000;
+    font-size: 23px;
+    cursor: pointer;
+    display: none;
+}
+.home{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.home .top{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 100px;
+    height: 50%; width: 100%;
+}
+.home .top img{
+    height: 50vh; width: 100%;
+}
+.home .bottom{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    height: 50%; width: 100%;
+}
+.home .bottom h1{
+    color:#560000;
+    font-family: 'Archivo Black', sans-serif;
+    text-align: center;
+    font-size: 100px;
+    font-weight: 500;
+    text-shadow: 10px 3px 8px rgb(208, 204, 204);
+}
+.home .bottom h2, .home .bottom span{
+    text-align:center;
+    color: black;
+}
+
+@media (max-width: 1300px) {
+    .home .maxwidth{
+        margin-left: 0px;
+    }
+}
+@media (max-width: 1174px) {
+    
+}
+@media (max-width: 1017px) {
+    .maxwidth{
+        padding: 0 50px;
+    }
+}
+@media (max-width: 947px) {
+    .maxwidth{
+        padding: 0 50px;
+    }
+    .navitab .opt {
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        left: -100%;
+        top: 0;
+        background:url("../../../assets/imgs/batstateuportrait.jpg");
+        background-size: 125%;
+        text-align: center;
+        padding-top: 80px;
+        transition: all 0.3s ease;
+    }
+    .navitab .opt.active{
+        color: #fff;
+        left: 0;
+    }
+    .opt-btn{
+        display: block;
+        z-index: 999;
+    }
+    .opt-btn i.active:before{
+        content: "\f00d";
+    }
+    .navitab .opt li {
+        display: block;
+    }
+    .navitab .opt li a {
+        display: inline-block;
+        margin: 20px;
+        font-size: 25px;
+    }
+    .maxwidth{
+        max-width: 800px;
+    }
+}
+@media (max-width: 690px) {
+    .maxwidth{
+        padding: 0 15px;
+    }
+}
+@media (max-width: 450px) {
+
+}
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1920px;
+  position: relative;
+  margin:0%;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@media(max-width:830px) {
+  .slideshow-container .mySlides img{
+    width: 0%;
+    display: none;
+  }
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
