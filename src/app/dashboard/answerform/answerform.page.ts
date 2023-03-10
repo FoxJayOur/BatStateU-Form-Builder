@@ -27,6 +27,16 @@ export class AnswerformPage implements OnInit {
           }
         ]
       }
+    ],
+    questions2: [
+      {
+        question: "",
+        comments: [
+          {
+            comment: "",
+          }
+        ]
+      }
     ]
   }
 
@@ -35,7 +45,8 @@ export class AnswerformPage implements OnInit {
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.myForm = this.fb.group({
       title: [''],
-      questions: this.fb.array([])
+      questions: this.fb.array([]),
+      questions2: this.fb.array([])
     })
   }
 
@@ -89,6 +100,7 @@ export class AnswerformPage implements OnInit {
     document.getElementById('GFG').innerHTML
         = this.TTitle;
     this.setQuestions()
+    this.setQuestions3()
   }
 
   addNewQuestion() {
@@ -120,6 +132,14 @@ export class AnswerformPage implements OnInit {
   setQuestions() {
     let control = <FormArray>this.myForm.controls.questions;
     this.data.questions.forEach(x => {
+      control.push(this.fb.group({ 
+        question: x.question,
+        comments: this.setComments(x) }))
+    })
+  }
+  setQuestions3() {
+    let control = <FormArray>this.myForm.controls.questions2;
+    this.data.questions2.forEach(x => {
       control.push(this.fb.group({ 
         question: x.question,
         comments: this.setComments(x) }))

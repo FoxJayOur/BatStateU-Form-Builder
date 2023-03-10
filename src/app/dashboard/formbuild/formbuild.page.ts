@@ -20,6 +20,16 @@ export class FormbuildPage implements OnInit {
           }
         ]
       }
+    ],
+    questions2: [
+      {
+        question: "",
+        comments: [
+          {
+            comment: "",
+          }
+        ]
+      }
     ]
   }
 
@@ -28,10 +38,12 @@ export class FormbuildPage implements OnInit {
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.myForm = this.fb.group({
       title: [''],
-      questions: this.fb.array([])
+      questions: this.fb.array([]),
+      questions2: this.fb.array([])
     })
 
     this.setQuestions();
+    this.setQuestions2();
   }
 
   onSubmit() {
@@ -47,9 +59,22 @@ export class FormbuildPage implements OnInit {
       })
     )
   }
+  addNewQuestion2() {
+    let control = <FormArray>this.myForm.controls.questions2;
+    control.push(
+      this.fb.group({
+        question: [''],
+        comments: this.fb.array([])
+      })
+    )
+  }
 
   deleteQuestion(index) {
     let control = <FormArray>this.myForm.controls.questions;
+    control.removeAt(index)
+  }
+  deleteQuestion2(index) {
+    let control = <FormArray>this.myForm.controls.questions2;
     control.removeAt(index)
   }
 
@@ -67,6 +92,14 @@ export class FormbuildPage implements OnInit {
   setQuestions() {
     let control = <FormArray>this.myForm.controls.questions;
     this.data.questions.forEach(x => {
+      control.push(this.fb.group({ 
+        question: x.question, 
+        comments: this.setComments(x) }))
+    })
+  }
+  setQuestions2() {
+    let control = <FormArray>this.myForm.controls.questions2;
+    this.data.questions2.forEach(x => {
       control.push(this.fb.group({ 
         question: x.question, 
         comments: this.setComments(x) }))
