@@ -28,6 +28,11 @@ export class FormbuildPage implements OnInit {
           {
             comment: "",
           }
+        ],
+        comments2:  [
+          {
+            comment: "",
+          }
         ]
       }
     ]
@@ -64,7 +69,8 @@ export class FormbuildPage implements OnInit {
     control.push(
       this.fb.group({
         question: [''],
-        comments: this.fb.array([])
+        comments: this.fb.array([]),
+        comments2: this.fb.array([])
       })
     )
   }
@@ -79,6 +85,12 @@ export class FormbuildPage implements OnInit {
   }
 
   addNewComment(control) {
+    control.push(
+      this.fb.group({
+        comment: ['']
+      }))
+  }
+  addNewComment2(control) {
     control.push(
       this.fb.group({
         comment: ['']
@@ -102,13 +114,24 @@ export class FormbuildPage implements OnInit {
     this.data.questions2.forEach(x => {
       control.push(this.fb.group({ 
         question: x.question, 
-        comments: this.setComments(x) }))
+        comments: this.setComments(x),
+        comments2: this.setComments2(x)}))
     })
   }
 
   setComments(x) {
     let arr = new FormArray([])
     x.comments.forEach(y => {
+      arr.push(this.fb.group({ 
+        comment: y.comment 
+      }))
+    })
+    return arr;
+  }
+
+  setComments2(x) {
+    let arr = new FormArray([])
+    x.comments2.forEach(y => {
       arr.push(this.fb.group({ 
         comment: y.comment 
       }))

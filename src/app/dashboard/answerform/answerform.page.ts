@@ -16,6 +16,7 @@ export class AnswerformPage implements OnInit {
   bodyTrial: string
   question: string
   comment: string
+  changed: string
 
   data = {
     questions: [
@@ -32,6 +33,11 @@ export class AnswerformPage implements OnInit {
       {
         question: "",
         comments: [
+          {
+            comment: "",
+          }
+        ],
+        comments2: [
           {
             comment: "",
           }
@@ -52,6 +58,25 @@ export class AnswerformPage implements OnInit {
 
   onSubmit() {
     alert(this.myForm.value);
+  }
+
+  getID() {
+    var commentID = this.comment.valueOf()
+    console.log(commentID)
+  }
+
+  optionSubmit(index, qindex) {
+    this.data.questions2[qindex].comments[index].comment = this.data.questions2[qindex].comments[index].comment + " is selected"
+    console.log(index, qindex)
+    console.log(this.data.questions2[qindex].comments[index].comment);
+    this.getID();
+    (<HTMLInputElement>document.getElementById("comment[index]")).value = this.data.questions2[qindex].comments[index].comment;
+    this.changed = this.data.questions2[qindex].comments[index].comment
+    return this.data.questions2[qindex].comments[index].comment
+  }
+
+  getOptions() {
+    return this.data.questions2[this.comment]
   }
 
   viewForms() {
@@ -95,12 +120,14 @@ export class AnswerformPage implements OnInit {
     })
     return this.title
   }
-  myGeeks() {
+  myGeeks(index) {
     this.findTitle()
     document.getElementById('GFG').innerHTML
         = this.TTitle;
     this.setQuestions()
     this.setQuestions3()
+    console.log(this.data.questions2[0].comments[0].comment)
+    document.getElementById('comment').innerHTML = this.data.questions2[0].comments[0].comment
   }
 
   addNewQuestion() {
@@ -142,7 +169,8 @@ export class AnswerformPage implements OnInit {
     this.data.questions2.forEach(x => {
       control.push(this.fb.group({ 
         question: x.question,
-        comments: this.setComments(x) }))
+        comments: this.setComments(x),
+        comments2: this.setComments2(x) }))
     })
   }
 
@@ -170,6 +198,16 @@ export class AnswerformPage implements OnInit {
   setComments(x) {
     let arr = new FormArray([])
     x.comments.forEach(y => {
+      arr.push(this.fb.group({ 
+        comment: y.comment 
+      }))
+    })
+    return arr;
+  }
+
+  setComments2(x) {
+    let arr = new FormArray([])
+    x.comments2.forEach(y => {
       arr.push(this.fb.group({ 
         comment: y.comment 
       }))
