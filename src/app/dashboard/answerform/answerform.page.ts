@@ -55,7 +55,7 @@ export class AnswerformPage implements OnInit {
       questions2: this.fb.array([])
     })
   }
-
+  
   onSubmit() {
     alert(this.myForm.value);
   }
@@ -249,3 +249,12 @@ export class AnswerformPage implements OnInit {
   }
 
 }
+
+const textarea = document.querySelector("textarea");
+  if(textarea) {
+    textarea.addEventListener("keyup", e =>{
+      textarea.style.height = "63px";
+      let scHeight = (e.target as HTMLInputElement).scrollHeight;
+      textarea.style.height = `${scHeight}px`;
+    });
+  }
