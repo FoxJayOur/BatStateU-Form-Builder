@@ -21,7 +21,7 @@ ion-content{
 .formCreate {
     text-align: center;
 }
-.formCreate .form-group input, .formCreate .form-group select {
+.formCreate .form-group input, .formCreate .form-group select, .formCreate .form-group ion-textarea {
     text-align: center;
     margin-left: 30%;
 }
@@ -58,7 +58,7 @@ ion-content{
     margin-left: 5%; margin-top: 3%;
 }
 .formCreate .buttonlayout .below #butt i {
-    font-size: 34px;
+    font-size: 30px;
 }
 .maxwidth {
     max-width: 1300;
@@ -237,4 +237,14 @@ ion-content{
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+
+ion-textarea::placeholder{
+    color: #b3b3b3;
+}
+ion-textarea:is(:focus, :valid){
+    padding: 14px;
+}
+ion-textarea::-webkit-scrollbar{
+    width: 0px;
 }

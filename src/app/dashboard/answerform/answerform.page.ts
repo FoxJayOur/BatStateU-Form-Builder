@@ -43,6 +43,16 @@ export class AnswerformPage implements OnInit {
           }
         ]
       }
+    ],
+    questions3: [
+      {
+        question: "",
+        comments: [
+          {
+            comment: "",
+          }
+        ]
+      }
     ]
   }
 
@@ -52,7 +62,8 @@ export class AnswerformPage implements OnInit {
     this.myForm = this.fb.group({
       title: [''],
       questions: this.fb.array([]),
-      questions2: this.fb.array([])
+      questions2: this.fb.array([]),
+      questions3: this.fb.array([])
     })
   }
   
@@ -126,8 +137,8 @@ export class AnswerformPage implements OnInit {
         = this.TTitle;
     this.setQuestions()
     this.setQuestions3()
+    this.setQuestions4()
     console.log(this.data.questions2[0].comments[0].comment)
-    document.getElementById('comment').innerHTML = this.data.questions2[0].comments[0].comment
   }
 
   addNewQuestion() {
@@ -173,6 +184,14 @@ export class AnswerformPage implements OnInit {
         comments2: this.setComments2(x) }))
     })
   }
+  setQuestions4() {
+    let control = <FormArray>this.myForm.controls.questions3;
+    this.data.questions3.forEach(x => {
+      control.push(this.fb.group({ 
+        question: x.question,
+        comments: this.setComments(x) }))
+    })
+  }
 
   setQuestions2() {
     let creds3 = {
@@ -208,6 +227,15 @@ export class AnswerformPage implements OnInit {
   setComments2(x) {
     let arr = new FormArray([])
     x.comments2.forEach(y => {
+      arr.push(this.fb.group({ 
+        comment: y.comment 
+      }))
+    })
+    return arr;
+  }
+  setComments3(x) {
+    let arr = new FormArray([])
+    x.comments.forEach(y => {
       arr.push(this.fb.group({ 
         comment: y.comment 
       }))

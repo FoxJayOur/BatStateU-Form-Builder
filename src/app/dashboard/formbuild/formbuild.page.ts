@@ -35,6 +35,16 @@ export class FormbuildPage implements OnInit {
           }
         ]
       }
+    ],
+    questions3: [
+      {
+        question: "",
+        comments: [
+          {
+            comment: "",
+          }
+        ]
+      }
     ]
   }
 
@@ -44,11 +54,13 @@ export class FormbuildPage implements OnInit {
     this.myForm = this.fb.group({
       title: [''],
       questions: this.fb.array([]),
-      questions2: this.fb.array([])
+      questions2: this.fb.array([]),
+      questions3: this.fb.array([]),
     })
 
     this.setQuestions();
     this.setQuestions2();
+    this.setQuestions3();
   }
 
   onSubmit() {
@@ -74,6 +86,15 @@ export class FormbuildPage implements OnInit {
       })
     )
   }
+  addNewQuestion3() {
+    let control = <FormArray>this.myForm.controls.questions3;
+    control.push(
+      this.fb.group({
+        question: [''],
+        comments: this.fb.array([])
+      })
+    )
+  }
 
   deleteQuestion(index) {
     let control = <FormArray>this.myForm.controls.questions;
@@ -81,6 +102,10 @@ export class FormbuildPage implements OnInit {
   }
   deleteQuestion2(index) {
     let control = <FormArray>this.myForm.controls.questions2;
+    control.removeAt(index)
+  }
+  deleteQuestion3(index) {
+    let control = <FormArray>this.myForm.controls.questions3;
     control.removeAt(index)
   }
 
@@ -91,6 +116,12 @@ export class FormbuildPage implements OnInit {
       }))
   }
   addNewComment2(control) {
+    control.push(
+      this.fb.group({
+        comment: ['']
+      }))
+  }
+  addNewComment3(control) {
     control.push(
       this.fb.group({
         comment: ['']
@@ -118,6 +149,14 @@ export class FormbuildPage implements OnInit {
         comments2: this.setComments2(x)}))
     })
   }
+  setQuestions3() {
+    let control = <FormArray>this.myForm.controls.questions3;
+    this.data.questions3.forEach(x => {
+      control.push(this.fb.group({ 
+        question: x.question, 
+        comments: this.setComments3(x) }))
+    })
+  }
 
   setComments(x) {
     let arr = new FormArray([])
@@ -132,6 +171,15 @@ export class FormbuildPage implements OnInit {
   setComments2(x) {
     let arr = new FormArray([])
     x.comments2.forEach(y => {
+      arr.push(this.fb.group({ 
+        comment: y.comment 
+      }))
+    })
+    return arr;
+  }
+  setComments3(x) {
+    let arr = new FormArray([])
+    x.comments.forEach(y => {
       arr.push(this.fb.group({ 
         comment: y.comment 
       }))
@@ -155,3 +203,12 @@ export class FormbuildPage implements OnInit {
 
   }
 }
+
+const textarea = <HTMLInputElement>document.querySelector("comment3");
+  if(textarea) {
+    textarea.addEventListener("keyup", e =>{
+      textarea.style.height = "63px";
+      let scHeight = (e.target as HTMLInputElement).scrollHeight;
+      textarea.style.height = `${scHeight}px`;
+    });
+  }
