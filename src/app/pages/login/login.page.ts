@@ -13,6 +13,7 @@ export class LoginPage implements OnInit {
   email:string
   password:string
   isLoading:boolean = false
+  accessToken:object
   constructor(private http: HttpClient, private router: Router,
     private alertController: AlertController) { }
 
@@ -28,6 +29,9 @@ export class LoginPage implements OnInit {
     .subscribe(res =>{
       localStorage.setItem('user', JSON.stringify(res))
       this.router.navigateByUrl('/news', {replaceUrl: true})
+      console.log(res)
+      this.accessToken = res
+      console.log(this.accessToken)
     }, error =>{
       this.isLoading = false
       this.presentAlert('Login Failed', 'Wrong credentials')
