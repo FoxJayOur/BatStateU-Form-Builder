@@ -202,6 +202,32 @@ export class FormbuildPage implements OnInit {
     })
 
   }
+  pass2(){
+    console.log(this.myForm.value)
+    const userData = this.myForm.value
+    this.http.post('http://localhost:8080/api/formanaAuth/input2', userData)
+    .subscribe(res =>{
+      localStorage.setItem('data2', JSON.stringify(res))
+      this.router.navigateByUrl('/dashboard', {replaceUrl: true})
+      console.log(res)
+    }, error =>{
+      console.log(error)
+    })
+
+  }
+  pass3(){
+    console.log(this.myForm.value)
+    const userData = this.myForm.value
+    this.http.post('http://localhost:8080/api/formanaAuth/input3', userData)
+    .subscribe(res =>{
+      localStorage.setItem('data3', JSON.stringify(res))
+      this.router.navigateByUrl('/dashboard', {replaceUrl: true})
+      console.log(res)
+    }, error =>{
+      console.log(error)
+    })
+
+  }
 }
 
 const textarea = <HTMLInputElement>document.querySelector("comment3");
