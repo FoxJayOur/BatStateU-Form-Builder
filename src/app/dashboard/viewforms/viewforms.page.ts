@@ -38,10 +38,12 @@ export class ViewformsPage implements OnInit {
     this.http.post('http://localhost:8080/api/formanaAuth/title', titleCreds)
     .subscribe(res => {
       localStorage.setItem('data', JSON.stringify(res))
+      this.presentAlert('Form Exists', 'Proceed to answer form')
       console.log(res)
     }, error => {
        console.log(error)
     })
+
     return this.wtitle
   }
 
@@ -80,5 +82,17 @@ export class ViewformsPage implements OnInit {
     }, error =>{
        console.log(error)
     })
+  }
+  async presentAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    
   }
 }
