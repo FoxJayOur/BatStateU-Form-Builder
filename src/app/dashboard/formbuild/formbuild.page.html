@@ -267,10 +267,33 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-success" (click)="pass()">Submit</button>
-      <button type="submit" class="btn btn-success" (click)="pass2()">Submit 2</button>
-      <button type="submit" class="btn btn-success" (click)="pass3()">Submit 3</button>
-      <button type="button" class="btn btn-basic" >Cancel</button>
+      <button id="open-modal" type="button" class="btn btn-success" style="padding: 25px; margin: 8px;">Submit</button>
+        <ion-modal trigger="open-modal">
+          <ng-template>
+            <ion-content class="ion-padding">
+              <div class="titleLabel" style="background: rgb(214, 213, 213); padding: 18px; margin-bottom: 80px; border-radius: 10px;">
+                <ion-label style="font-size: 25px; font-family:'Poppins', sans-serif; color: black;">CHOOSE BUILDING DESIGNATION</ion-label>
+              </div>
+              <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+                <button type="button" (click)="pass()" style="background-color: rgba(158,0,0,255);
+                border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                CICS Building<ion-ripple-effect></ion-ripple-effect></button>
+              </div>
+              <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+                <button type="button" (click)="pass2()" style="background-color: rgba(158,0,0,255);
+                border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                CEAFA Building<ion-ripple-effect></ion-ripple-effect></button>
+              </div>
+              <div class="ion-activatable ripple-parent rectangle" style="border: none;">
+                <button type="button" (click)="pass3()" style="background-color: rgba(158,0,0,255);
+                border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
+                Faculty<ion-ripple-effect></ion-ripple-effect></button>
+              </div>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+      <button type="button" class="btn btn-basic" [routerLink]="['/dashboard/createforms']" style="background-color: rgb(214, 213, 213); 
+      padding: 25px; margin: 8px;">Cancel</button>
       
     </form>
   </div>
