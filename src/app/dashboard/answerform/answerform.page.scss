@@ -10,13 +10,14 @@ ion-content{
   box-sizing: border-box;
 }
 .welcomeText .text{
+    font-family: 'Poppins', sans-serif;
     text-align: center;
     font-size: 40px;
-    font-weight: 500;
-    text-shadow:#560000 4px 3px 3px;  
-    color: rgb(255, 255, 255);
+    font-weight: 600;
+    text-shadow:rgb(214, 213, 213) 4px 3px 3px;  
+    color: #560000;
     padding-top: 60px;
-    background-color: #3d0404;
+    background-color: rgb(214, 213, 213);
 }
 .formCreate {
     text-align: center;

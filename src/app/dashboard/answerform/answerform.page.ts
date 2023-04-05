@@ -17,6 +17,7 @@ export class AnswerformPage implements OnInit {
   question: string
   comment: string
   changed: string
+  building: number
 
   data = {
     questions: [
@@ -118,6 +119,42 @@ export class AnswerformPage implements OnInit {
     })
     return this.TTitle
   }
+  findTitle2() {
+    let titleCreds = {
+      wtitle: this.wtitle
+    }
+
+    this.http.post('http://localhost:8080/api/formanaAuth/title2', titleCreds)
+    .subscribe(res => {
+      localStorage.setItem('data2', JSON.stringify(res))
+      console.log(res)
+      this.TTitle = this.wtitle
+      this.bodyTrial = JSON.stringify(res)
+      this.data = JSON.parse(this.bodyTrial)
+      console.log(this.data.questions[0].question)
+    }, error => {
+       console.log(error)
+    })
+    return this.TTitle
+  }
+  findTitle3() {
+    let titleCreds = {
+      wtitle: this.wtitle
+    }
+
+    this.http.post('http://localhost:8080/api/formanaAuth/title3', titleCreds)
+    .subscribe(res => {
+      localStorage.setItem('data3', JSON.stringify(res))
+      console.log(res)
+      this.TTitle = this.wtitle
+      this.bodyTrial = JSON.stringify(res)
+      this.data = JSON.parse(this.bodyTrial)
+      console.log(this.data.questions[0].question)
+    }, error => {
+       console.log(error)
+    })
+    return this.TTitle
+  }
   viewTitle(): string {
 
     this.http.get('http://localhost:8080/api/formanaAuth/title')
@@ -139,6 +176,33 @@ export class AnswerformPage implements OnInit {
     this.setQuestions3()
     this.setQuestions4()
     console.log(this.data.questions2[0].comments[0].comment)
+    this.building = 0
+
+    return this.building
+  }
+  myGeeks2(index) {
+    this.findTitle2()
+    document.getElementById('GFG').innerHTML
+        = this.TTitle;
+    this.setQuestions()
+    this.setQuestions3()
+    this.setQuestions4()
+    console.log(this.data.questions2[0].comments[0].comment)
+    this.building = 1
+
+    return this.building
+  }
+  myGeeks3(index) {
+    this.findTitle3()
+    document.getElementById('GFG').innerHTML
+        = this.TTitle;
+    this.setQuestions()
+    this.setQuestions3()
+    this.setQuestions4()
+    console.log(this.data.questions2[0].comments[0].comment)
+    this.building = 2
+
+    return this.building
   }
 
   addNewQuestion() {
@@ -265,15 +329,39 @@ export class AnswerformPage implements OnInit {
   pass(){
     console.log(this.myForm.value)
     const userData = this.myForm.value
-    this.http.post('http://localhost:8080/api/formanaAuth/answer', userData)
-    .subscribe(res =>{
-      localStorage.setItem('data', JSON.stringify(res))
-      this.router.navigateByUrl('/dashboard', {replaceUrl: true})
-      console.log(res)
-    }, error =>{
-      console.log(error)
-    })
-
+    if (this.building == 0) {
+      this.http.post('http://localhost:8080/api/formanaAuth/answer', userData)
+      .subscribe(res =>{
+        localStorage.setItem('data', JSON.stringify(res))
+        this.router.navigateByUrl('/dashboard', {replaceUrl: true})
+        console.log(res)
+      }, error =>{
+        console.log(error)
+      })
+    }
+    else if (this.building == 1) {
+      this.http.post('http://localhost:8080/api/formanaAuth/answer2', userData)
+      .subscribe(res =>{
+        localStorage.setItem('data', JSON.stringify(res))
+        this.router.navigateByUrl('/dashboard', {replaceUrl: true})
+        console.log(res)
+      }, error =>{
+        console.log(error)
+      })
+    }
+    else if (this.building == 2) {
+      this.http.post('http://localhost:8080/api/formanaAuth/answer3', userData)
+      .subscribe(res =>{
+        localStorage.setItem('data', JSON.stringify(res))
+        this.router.navigateByUrl('/dashboard', {replaceUrl: true})
+        console.log(res)
+      }, error =>{
+        console.log(error)
+      })
+    }
+    else {
+      return this.building
+    }
   }
 
 }
