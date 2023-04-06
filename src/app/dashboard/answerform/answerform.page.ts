@@ -61,7 +61,7 @@ export class AnswerformPage implements OnInit {
 
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.myForm = this.fb.group({
-      title: [''],
+      title: [this.TTitle],
       questions: this.fb.array([]),
       questions2: this.fb.array([]),
       questions3: this.fb.array([])
@@ -169,8 +169,8 @@ export class AnswerformPage implements OnInit {
     return this.title
   }
   myGeeks(index) {
-    this.findTitle()
-    document.getElementById('GFG').innerHTML
+    this.findTitle();
+    (<HTMLInputElement>document.getElementById('title')).value
         = this.TTitle;
     this.setQuestions()
     this.setQuestions3()
@@ -181,8 +181,8 @@ export class AnswerformPage implements OnInit {
     return this.building
   }
   myGeeks2(index) {
-    this.findTitle2()
-    document.getElementById('GFG').innerHTML
+    this.findTitle2();
+    (<HTMLInputElement>document.getElementById('title')).value
         = this.TTitle;
     this.setQuestions()
     this.setQuestions3()
@@ -193,8 +193,8 @@ export class AnswerformPage implements OnInit {
     return this.building
   }
   myGeeks3(index) {
-    this.findTitle3()
-    document.getElementById('GFG').innerHTML
+    this.findTitle3();
+    (<HTMLInputElement>document.getElementById('title')).value
         = this.TTitle;
     this.setQuestions()
     this.setQuestions3()
@@ -230,6 +230,11 @@ export class AnswerformPage implements OnInit {
   deleteComment(control, index) {
     control.removeAt(index)
   }
+
+  /*setTitle() {
+    let control = this.myForm.controls.title;
+    this.data.title = this.myForm.controls.title;
+  }*/
 
   setQuestions() {
     let control = <FormArray>this.myForm.controls.questions;
@@ -329,6 +334,7 @@ export class AnswerformPage implements OnInit {
   pass(){
     console.log(this.myForm.value)
     const userData = this.myForm.value
+    this.myForm.value.title = this.TTitle
     if (this.building == 0) {
       this.http.post('http://localhost:8080/api/formanaAuth/answer', userData)
       .subscribe(res =>{

@@ -112,7 +112,14 @@
     <form [formGroup]="myForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="form-group">
         <label for="title" style="color: black;">Form Title <span> by </span></label><br>
-        <label id="GFG" for="title2" style="color: black; font-size: 25px;"></label>
+        <input type="text"
+              id="title"
+              class="form-control"
+              placeholder="Title"
+              name="title"
+              formControlName="title"
+              style="width: 40%;"
+              required>
       </div>
       <div formArrayName="questions">
         <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions').controls; let i=index">
