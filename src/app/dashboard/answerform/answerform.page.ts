@@ -22,6 +22,7 @@ export class AnswerformPage implements OnInit {
   nullz: object
   expiryDate: Date
   bodyT: JSON
+  description: String
 
   data = {
     questions: [
@@ -66,6 +67,7 @@ export class AnswerformPage implements OnInit {
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private alertController: AlertController) {
     this.myForm = this.fb.group({
       title: [this.TTitle],
+      description: [this.description],
       expiryDate: [this.expiryDate],
       questions: this.fb.array([]),
       questions2: this.fb.array([]),
@@ -119,8 +121,14 @@ export class AnswerformPage implements OnInit {
       this.TTitle = this.wtitle
       this.bodyTrial = JSON.stringify(res)
       this.data = JSON.parse(this.bodyTrial)
-      this.bodyT = JSON.parse(this.bodyTrial)
-      console.log(this.bodyT)
+      type ObjectKey = keyof typeof this.bodyTrial;
+      const Key = 'expiryDate' as ObjectKey
+      const KeyD = 'description' as ObjectKey
+      console.log(Key)
+      this.expiryDate = new Date(res[Key])
+      this.description = res[KeyD]
+      console.log(this.description)
+      console.log(this.expiryDate)
       console.log(this.data.questions[0].question)
     }, error => {
        console.log(error)
@@ -147,6 +155,14 @@ export class AnswerformPage implements OnInit {
       this.TTitle = this.wtitle
       this.bodyTrial = JSON.stringify(res)
       this.data = JSON.parse(this.bodyTrial)
+      type ObjectKey = keyof typeof this.bodyTrial;
+      const Key = 'expiryDate' as ObjectKey
+      const KeyD = 'description' as ObjectKey
+      console.log(Key)
+      this.expiryDate = new Date(res[Key])
+      this.description = res[KeyD]
+      console.log(this.description)
+      console.log(this.expiryDate)
       console.log(this.data.questions[0].question)
     }, error => {
        console.log(error)
@@ -175,8 +191,11 @@ export class AnswerformPage implements OnInit {
       this.data = JSON.parse(this.bodyTrial)
       type ObjectKey = keyof typeof this.bodyTrial;
       const Key = 'expiryDate' as ObjectKey
+      const KeyD = 'description' as ObjectKey
       console.log(Key)
       this.expiryDate = new Date(res[Key])
+      this.description = res[KeyD]
+      console.log(this.description)
       console.log(this.expiryDate)
       console.log(this.data.questions[0].question)
     }, error => {
@@ -208,6 +227,8 @@ export class AnswerformPage implements OnInit {
     this.findTitle();
     (<HTMLInputElement>document.getElementById('title')).value
         = this.TTitle;
+    document.getElementById('description').innerHTML
+        = this.description.toString();
     this.setQuestions()
     this.setQuestions3()
     this.setQuestions4()
@@ -220,6 +241,8 @@ export class AnswerformPage implements OnInit {
     this.findTitle2();
     (<HTMLInputElement>document.getElementById('title')).value
         = this.TTitle;
+    document.getElementById('description').innerHTML
+        = this.description.toString();
     this.setQuestions()
     this.setQuestions3()
     this.setQuestions4()
@@ -232,6 +255,8 @@ export class AnswerformPage implements OnInit {
     this.findTitle3();
     (<HTMLInputElement>document.getElementById('title')).value
         = this.TTitle;
+    document.getElementById('description').innerHTML
+        = this.description.toString();
     this.setQuestions()
     this.setQuestions3()
     this.setQuestions4()

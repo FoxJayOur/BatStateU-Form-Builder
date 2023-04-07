@@ -53,6 +53,7 @@ export class FormbuildPage implements OnInit {
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.myForm = this.fb.group({
       title: [''],
+      description: [''],
       expiryDate: Date,
       questions: this.fb.array([]),
       questions2: this.fb.array([]),
@@ -231,11 +232,11 @@ export class FormbuildPage implements OnInit {
   }
 }
 
-const textarea = <HTMLInputElement>document.querySelector("comment3");
+const textarea = document.querySelector("textarea");
   if(textarea) {
     textarea.addEventListener("keyup", e =>{
       textarea.style.height = "63px";
-      let scHeight = (e.target as HTMLInputElement).scrollHeight;
+      let scHeight = (e.target as HTMLElement).scrollHeight;
       textarea.style.height = `${scHeight}px`;
     });
   }

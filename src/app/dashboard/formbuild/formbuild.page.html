@@ -62,7 +62,20 @@
               required>
       </div>
       <div class="form-group">
-        <label for="title" style="color: black;">Form Title <span> by </span></label>
+        <label for="textarea" style="color: black;">Form Description</label>
+        <ion-textarea formControlName="description"
+                              class="form-control"
+                              style="margin-right:5px; width: 40%;" 
+                              type="textarea"
+                              placeholder="Description"
+                              id="textarea"
+                              name="description"
+                              size="1"
+                                >
+                              </ion-textarea>
+      </div>
+      <div class="form-group">
+        <label for="title" style="color: black;">Expiration Date</label>
         <input type="date"
               id="expiryDate"
               class="form-control"
