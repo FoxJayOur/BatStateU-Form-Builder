@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-answerform',
@@ -18,6 +19,7 @@ export class AnswerformPage implements OnInit {
   comment: string
   changed: string
   building: number
+  nullz: object
 
   data = {
     questions: [
@@ -59,7 +61,7 @@ export class AnswerformPage implements OnInit {
 
   myForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private alertController: AlertController) {
     this.myForm = this.fb.group({
       title: [this.TTitle],
       questions: this.fb.array([]),
@@ -101,7 +103,7 @@ export class AnswerformPage implements OnInit {
     })
   }
 
-  findTitle() {
+  async findTitle() {
     let titleCreds = {
       wtitle: this.wtitle
     }
@@ -110,6 +112,7 @@ export class AnswerformPage implements OnInit {
     .subscribe(res => {
       localStorage.setItem('data', JSON.stringify(res))
       console.log(res)
+      this.nullz = res
       this.TTitle = this.wtitle
       this.bodyTrial = JSON.stringify(res)
       this.data = JSON.parse(this.bodyTrial)
@@ -117,9 +120,16 @@ export class AnswerformPage implements OnInit {
     }, error => {
        console.log(error)
     })
+    await new Promise(f => setTimeout(f, 1000));
+    if (this.nullz == null) {
+      this.presentAlert("Can't find the form", 'Wrong information filled out')
+    }
+    else {
+      console.log("Continue")
+    }
     return this.TTitle
   }
-  findTitle2() {
+  async findTitle2() {
     let titleCreds = {
       wtitle: this.wtitle
     }
@@ -128,6 +138,7 @@ export class AnswerformPage implements OnInit {
     .subscribe(res => {
       localStorage.setItem('data2', JSON.stringify(res))
       console.log(res)
+      this.nullz = res
       this.TTitle = this.wtitle
       this.bodyTrial = JSON.stringify(res)
       this.data = JSON.parse(this.bodyTrial)
@@ -135,9 +146,16 @@ export class AnswerformPage implements OnInit {
     }, error => {
        console.log(error)
     })
+    await new Promise(f => setTimeout(f, 1000));
+    if (this.nullz == null) {
+      this.presentAlert("Can't find the form", 'Wrong information filled out')
+    }
+    else {
+      console.log("Continue")
+    }
     return this.TTitle
   }
-  findTitle3() {
+  async findTitle3() {
     let titleCreds = {
       wtitle: this.wtitle
     }
@@ -146,6 +164,7 @@ export class AnswerformPage implements OnInit {
     .subscribe(res => {
       localStorage.setItem('data3', JSON.stringify(res))
       console.log(res)
+      this.nullz = res
       this.TTitle = this.wtitle
       this.bodyTrial = JSON.stringify(res)
       this.data = JSON.parse(this.bodyTrial)
@@ -153,6 +172,13 @@ export class AnswerformPage implements OnInit {
     }, error => {
        console.log(error)
     })
+    await new Promise(f => setTimeout(f, 1000));
+    if (this.nullz == null) {
+      this.presentAlert("Can't find the form", 'Wrong information filled out')
+    }
+    else {
+      console.log("Continue")
+    }
     return this.TTitle
   }
   viewTitle(): string {
@@ -330,6 +356,18 @@ export class AnswerformPage implements OnInit {
       }
     }
   }
+  async presentAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    
+  }
 
   pass(){
     console.log(this.myForm.value)
@@ -380,3 +418,4 @@ const textarea = document.querySelector("textarea");
       textarea.style.height = `${scHeight}px`;
     });
   }
+

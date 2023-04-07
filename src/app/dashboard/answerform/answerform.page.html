@@ -119,7 +119,8 @@
               name="title"
               formControlName="title"
               style="width: 40%;"
-              required>
+              required
+              readonly>
       </div>
       <div formArrayName="questions">
         <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions').controls; let i=index">
@@ -283,6 +284,7 @@
       
       <!--<button type="submit" class="btn btn-success" (click)="continue()">Update</button>-->
       <button type="submit" class="btn btn-success" (click)="pass()" style="padding: 25px; margin: 8px;">Submit</button>
+      <button type="button" [routerLink]="['/dashboard']" style="padding: 30px; margin: 8px; margin-top: 10px; border-radius: 8px; background-color: rgb(213, 213, 213);">Reset</button>
     </form>
   </div>
 </ion-content>
