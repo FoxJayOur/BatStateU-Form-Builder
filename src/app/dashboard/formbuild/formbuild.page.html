@@ -61,6 +61,17 @@
               style="width: 40%;"
               required>
       </div>
+      <div class="form-group">
+        <label for="title" style="color: black;">Form Title <span> by </span></label>
+        <input type="date"
+              id="expiryDate"
+              class="form-control"
+              placeholder="Title"
+              name="expiryDate"
+              formControlName="expiryDate"
+              style="width: 40%;"
+              required>
+      </div>
       <div formArrayName="questions">
         <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions').controls; let i=index">
           <fieldset>

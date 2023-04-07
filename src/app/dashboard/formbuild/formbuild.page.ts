@@ -53,6 +53,7 @@ export class FormbuildPage implements OnInit {
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.myForm = this.fb.group({
       title: [''],
+      expiryDate: Date,
       questions: this.fb.array([]),
       questions2: this.fb.array([]),
       questions3: this.fb.array([]),

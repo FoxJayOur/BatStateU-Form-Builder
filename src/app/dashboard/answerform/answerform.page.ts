@@ -20,6 +20,8 @@ export class AnswerformPage implements OnInit {
   changed: string
   building: number
   nullz: object
+  expiryDate: Date
+  bodyT: JSON
 
   data = {
     questions: [
@@ -64,6 +66,7 @@ export class AnswerformPage implements OnInit {
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private alertController: AlertController) {
     this.myForm = this.fb.group({
       title: [this.TTitle],
+      expiryDate: [this.expiryDate],
       questions: this.fb.array([]),
       questions2: this.fb.array([]),
       questions3: this.fb.array([])
@@ -116,6 +119,8 @@ export class AnswerformPage implements OnInit {
       this.TTitle = this.wtitle
       this.bodyTrial = JSON.stringify(res)
       this.data = JSON.parse(this.bodyTrial)
+      this.bodyT = JSON.parse(this.bodyTrial)
+      console.log(this.bodyT)
       console.log(this.data.questions[0].question)
     }, error => {
        console.log(error)
@@ -168,6 +173,11 @@ export class AnswerformPage implements OnInit {
       this.TTitle = this.wtitle
       this.bodyTrial = JSON.stringify(res)
       this.data = JSON.parse(this.bodyTrial)
+      type ObjectKey = keyof typeof this.bodyTrial;
+      const Key = 'expiryDate' as ObjectKey
+      console.log(Key)
+      this.expiryDate = new Date(res[Key])
+      console.log(this.expiryDate)
       console.log(this.data.questions[0].question)
     }, error => {
        console.log(error)
@@ -369,42 +379,50 @@ export class AnswerformPage implements OnInit {
     
   }
 
-  pass(){
+  async pass(){
     console.log(this.myForm.value)
     const userData = this.myForm.value
     this.myForm.value.title = this.TTitle
-    if (this.building == 0) {
-      this.http.post('http://localhost:8080/api/formanaAuth/answer', userData)
-      .subscribe(res =>{
-        localStorage.setItem('data', JSON.stringify(res))
-        this.router.navigateByUrl('/dashboard', {replaceUrl: true})
-        console.log(res)
-      }, error =>{
-        console.log(error)
-      })
-    }
-    else if (this.building == 1) {
-      this.http.post('http://localhost:8080/api/formanaAuth/answer2', userData)
-      .subscribe(res =>{
-        localStorage.setItem('data', JSON.stringify(res))
-        this.router.navigateByUrl('/dashboard', {replaceUrl: true})
-        console.log(res)
-      }, error =>{
-        console.log(error)
-      })
-    }
-    else if (this.building == 2) {
-      this.http.post('http://localhost:8080/api/formanaAuth/answer3', userData)
-      .subscribe(res =>{
-        localStorage.setItem('data', JSON.stringify(res))
-        this.router.navigateByUrl('/dashboard', {replaceUrl: true})
-        console.log(res)
-      }, error =>{
-        console.log(error)
-      })
+    console.log(this.myForm.value.expiryDate)
+    console.log(Date.now())
+    if (this.expiryDate < new Date(Date.now())) {
+      this.presentAlert("Can't find the form", 'Likely expired')
+      await new Promise(f => setTimeout(f, 1000));
     }
     else {
-      return this.building
+      if (this.building == 0) {
+        this.http.post('http://localhost:8080/api/formanaAuth/answer', userData)
+        .subscribe(res =>{
+          localStorage.setItem('data', JSON.stringify(res))
+          this.router.navigateByUrl('/dashboard', {replaceUrl: true})
+          console.log(res)
+        }, error =>{
+          console.log(error)
+        })
+      }
+      else if (this.building == 1) {
+        this.http.post('http://localhost:8080/api/formanaAuth/answer2', userData)
+        .subscribe(res =>{
+          localStorage.setItem('data', JSON.stringify(res))
+          this.router.navigateByUrl('/dashboard', {replaceUrl: true})
+          console.log(res)
+        }, error =>{
+          console.log(error)
+        })
+      }
+      else if (this.building == 2) {
+        this.http.post('http://localhost:8080/api/formanaAuth/answer3', userData)
+        .subscribe(res =>{
+          localStorage.setItem('data', JSON.stringify(res))
+          this.router.navigateByUrl('/dashboard', {replaceUrl: true})
+          console.log(res)
+        }, error =>{
+          console.log(error)
+        })
+      }
+      else {
+        return this.building
+      }
     }
   }
 
