@@ -214,6 +214,7 @@ export class FormbuildPage implements OnInit {
       localStorage.setItem('data', JSON.stringify(res))
       this.router.navigateByUrl('/dashboard', {replaceUrl: true})
       console.log(res)
+      this.presentAlert("FORM CREATION:", JSON.stringify(res))
     }, error =>{
       console.log(error)
     })
@@ -227,6 +228,7 @@ export class FormbuildPage implements OnInit {
       localStorage.setItem('data2', JSON.stringify(res))
       this.router.navigateByUrl('/dashboard', {replaceUrl: true})
       console.log(res)
+      this.presentAlert("FORM CREATION:", JSON.stringify(res))
     }, error =>{
       console.log(error)
     })
