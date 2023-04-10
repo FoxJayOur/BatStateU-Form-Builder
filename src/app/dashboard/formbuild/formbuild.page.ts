@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-formbuild',
@@ -9,6 +10,8 @@ import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
   styleUrls: ['./formbuild.page.scss'],
 })
 export class FormbuildPage implements OnInit {
+  msg: String
+  msgs: string
 
   data = {
     questions: [
@@ -50,7 +53,7 @@ export class FormbuildPage implements OnInit {
 
   myForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
+  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router, private alertController: AlertController) {
     this.myForm = this.fb.group({
       title: [''],
       description: [''],
@@ -191,6 +194,18 @@ export class FormbuildPage implements OnInit {
 
   ngOnInit() {
   }
+  async presentAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    
+  }
   pass(){
     console.log(this.myForm.value)
     const userData = this.myForm.value
@@ -225,6 +240,7 @@ export class FormbuildPage implements OnInit {
       localStorage.setItem('data3', JSON.stringify(res))
       this.router.navigateByUrl('/dashboard', {replaceUrl: true})
       console.log(res)
+      this.presentAlert("FORM CREATION:", JSON.stringify(res))
     }, error =>{
       console.log(error)
     })
