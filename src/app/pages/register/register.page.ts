@@ -19,12 +19,42 @@ export class RegisterPage implements OnInit {
   deptName: string
   program: string
   progName: string
+  code: number
+  bodyTrial: string
+  status: string
+  message: string
 
   constructor(private http: HttpClient, private router: Router, private alertController: AlertController) { }
 
   ngOnInit() {
   }
   
+  getOTP() {
+    this.presentAlert('OTP STATUS', "Please wait, OTP is being delivered to your electronic email! Stay with us!")
+
+    let body = {
+      email: this.email
+    }
+
+    this.http.post('http://localhost:8080/api/formanaAuth/formNotif', body).subscribe(res =>{
+      localStorage.setItem('OTPVerify', JSON.stringify(res))
+      console.log(res)
+      this.bodyTrial = JSON.stringify(res)
+      type ObjectKey = keyof typeof this.bodyTrial;
+      const Key = 'status' as ObjectKey
+      const Key2 = 'message' as ObjectKey
+      console.log(res[Key])
+      this.status = res[Key]
+      this.message = res[Key2]
+      this.presentAlert('OTP STATUS', (this.status + ": " + this.message))
+    }, error =>{
+      console.log(error)
+      this.presentAlert('Register Failed', 'Wrong information filled out')
+    })
+    console.log("getOTP RAN")
+    console.log(body)
+  }
+
   register(){
     let user = {
       name: this.name,

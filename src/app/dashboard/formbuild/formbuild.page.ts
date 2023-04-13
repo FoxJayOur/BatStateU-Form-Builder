@@ -61,6 +61,7 @@ export class FormbuildPage implements OnInit {
       questions: this.fb.array([]),
       questions2: this.fb.array([]),
       questions3: this.fb.array([]),
+      approvedBy: [''],
     })
 
     this.setQuestions();

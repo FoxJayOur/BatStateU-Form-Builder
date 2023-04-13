@@ -79,7 +79,7 @@
         <input type="date"
               id="expiryDate"
               class="form-control"
-              placeholder="Title"
+              placeholder="Expiration Date"
               name="expiryDate"
               formControlName="expiryDate"
               style="width: 40%;"
@@ -289,6 +289,17 @@
             </div>
           </fieldset>
         </div>
+      </div>
+      <div class="form-group">
+        <label for="title" style="color: black;">Approved by: </label>
+        <input type="text"
+              id="approvedBy"
+              class="form-control"
+              placeholder="Approved by"
+              name="approvedBy"
+              formControlName="approvedBy"
+              style="width: 40%;"
+              required>
       </div>
 
       <button id="open-modalMain" type="button" class="btn btn-success" style="padding: 25px; margin: 8px;">Submit</button>
