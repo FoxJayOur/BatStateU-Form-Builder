@@ -24,6 +24,7 @@ export class RegisterPage implements OnInit {
   status: string
   message: string
   userId: object
+  stats: boolean
 
   constructor(private http: HttpClient, private router: Router, private alertController: AlertController) { }
 
@@ -76,6 +77,12 @@ export class RegisterPage implements OnInit {
       const Key2 = 'message' as ObjectKey
       this.status = res[Key]
       this.message = res[Key2]
+      if (this.message == "VERIFIED") {
+        this.stats == true
+      }
+      else {
+        this.stats == false
+      }
       this.presentAlert('OTP STATUS', (this.status + ": " + this.message))
     }, error =>{
       console.log(error)
@@ -99,15 +106,20 @@ export class RegisterPage implements OnInit {
         }
       }
     }
-    this.http.post('http://localhost:8080/api/formanaAuth/register', user)
-    .subscribe(res =>{
-      localStorage.setItem('user', JSON.stringify(res))
-      this.router.navigateByUrl('/login', {replaceUrl: true})
-      console.log(res)
-    }, error =>{
-      console.log(error)
-      this.presentAlert('Register Failed', 'Wrong information filled out')
-    })
+    if (this.stats == true) {
+      this.http.post('http://localhost:8080/api/formanaAuth/register', user)
+      .subscribe(res =>{
+        localStorage.setItem('user', JSON.stringify(res))
+        this.router.navigateByUrl('/login', {replaceUrl: true})
+        console.log(res)
+      }, error =>{
+        console.log(error)
+        this.presentAlert('Register Failed', 'Wrong information filled out')
+      })
+    }
+    else {
+      this.presentAlert('Register Failed', 'Email not verified')
+    }
 
     console.log(user)
   }
