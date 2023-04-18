@@ -23,6 +23,7 @@ export class RegisterPage implements OnInit {
   bodyTrial: string
   status: string
   message: string
+  userId: object
 
   constructor(private http: HttpClient, private router: Router, private alertController: AlertController) { }
 
@@ -43,13 +44,42 @@ export class RegisterPage implements OnInit {
       type ObjectKey = keyof typeof this.bodyTrial;
       const Key = 'status' as ObjectKey
       const Key2 = 'message' as ObjectKey
-      console.log(res[Key])
+      const Key3 = 'getUserId' as ObjectKey
+      let keyTrial = res[Key3]
+      type ObjectKey2 = keyof typeof keyTrial;
+      const Key4 = '_id' as ObjectKey2
+      this.status = res[Key]
+      this.message = res[Key2]
+      this.userId = keyTrial[Key4]
+      this.presentAlert('OTP STATUS', (this.status + ": " + this.message))
+    }, error =>{
+      console.log(error)
+      this.presentAlert('Register Failed', 'Wrong information filled out')
+    })
+    console.log("getOTP RAN")
+    console.log(body)
+  }
+  verifyOTP() {
+    this.presentAlert('OTP STATUS', "Please wait, OTP is being verified!")
+
+    let body = {
+      userId: this.userId,
+      otp: this.code
+    }
+
+    this.http.post('http://localhost:8080/api/formanaAuth/verifyOTP', body).subscribe(res =>{
+      localStorage.setItem('OTPVerify', JSON.stringify(res))
+      console.log(res)
+      this.bodyTrial = JSON.stringify(res)
+      type ObjectKey = keyof typeof this.bodyTrial;
+      const Key = 'status' as ObjectKey
+      const Key2 = 'message' as ObjectKey
       this.status = res[Key]
       this.message = res[Key2]
       this.presentAlert('OTP STATUS', (this.status + ": " + this.message))
     }, error =>{
       console.log(error)
-      this.presentAlert('Register Failed', 'Wrong information filled out')
+      this.presentAlert('Verification Failed', 'Wrong information filled out')
     })
     console.log("getOTP RAN")
     console.log(body)
