@@ -46,6 +46,38 @@ export class ViewformsPage implements OnInit {
 
     return this.wtitle
   }
+  findTitle2(): string {
+    let titleCreds = {
+      wtitle: this.wtitle
+    }
+
+    this.http.post('http://localhost:8080/api/formanaAuth/title2', titleCreds)
+    .subscribe(res => {
+      localStorage.setItem('data2', JSON.stringify(res))
+      this.presentAlert('Form Exists', 'Proceed to answer form')
+      console.log(res)
+    }, error => {
+       console.log(error)
+    })
+
+    return this.wtitle
+  }
+  findTitle3(): string {
+    let titleCreds = {
+      wtitle: this.wtitle
+    }
+
+    this.http.post('http://localhost:8080/api/formanaAuth/title3', titleCreds)
+    .subscribe(res => {
+      localStorage.setItem('data3', JSON.stringify(res))
+      this.presentAlert('Form Exists', 'Proceed to answer form')
+      console.log(res)
+    }, error => {
+       console.log(error)
+    })
+
+    return this.wtitle
+  }
 
   viewTitle(): string {
 
