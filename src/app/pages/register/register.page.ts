@@ -24,7 +24,7 @@ export class RegisterPage implements OnInit {
   status: string
   message: string
   userId: object
-  stats: boolean
+  stats: boolean = false
 
   constructor(private http: HttpClient, private router: Router, private alertController: AlertController) { }
 
@@ -77,12 +77,14 @@ export class RegisterPage implements OnInit {
       const Key2 = 'message' as ObjectKey
       this.status = res[Key]
       this.message = res[Key2]
-      if (this.message == "VERIFIED") {
-        this.stats == true
+      if (this.status == "VERIFIED") {
+        this.stats = true
       }
       else {
-        this.stats == false
+        this.stats = false
       }
+      console.log(this.message)
+      console.log(this.stats)
       this.presentAlert('OTP STATUS', (this.status + ": " + this.message))
     }, error =>{
       console.log(error)
