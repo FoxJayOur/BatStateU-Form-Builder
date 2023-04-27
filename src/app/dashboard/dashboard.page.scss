@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 ion-content{
-  --background: #fff;
+  --background: #fff url("../../assets/imgs/BSU\ BACK.jpg") no-repeat center center/cover;
   font-family: 'Poppins', sans-serif;
 }
 *{
@@ -84,7 +84,8 @@ ion-content{
     font-weight: 500;
     width: 25%;
     height: 100%;
-    background-color: rgb(214, 213, 213);
+    background-color: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(3px);
 }
 .body .left .myForms, .body .left .createForms, .body .left .viewOtherForms{
     padding-bottom: 45px;

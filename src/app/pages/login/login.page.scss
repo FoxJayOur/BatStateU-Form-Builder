@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 ion-content{
-    --background: #fff url("../../../assets/imgs/bsu background.png") no-repeat center center/cover;
+    --background: #fff url("../../../assets/imgs/BSU\ BACK.jpg") no-repeat center center/cover;
     font-family: 'Archivo Black', sans-serif;
 }
 .login {
@@ -18,17 +18,18 @@ ion-content{
     height: 100vh;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
-    background-color: rgba(158,0,0,255);
-}
-.login .left img{
-    height: 435px; width: 310px;
-    padding-top: 12vh;
-    padding-bottom: 0px;
+    opacity: 1;
 }
 .login .left .text {
     font-style: normal;
-    padding-top: 0px;
-    color: #ffffff;
+    font-size: 220%;
+    margin-top: 37%;
+    margin-left: 3%;
+    color:#ffffff;
+    text-shadow: -3px 3px 3px #8a0000,
+				  3px 3px 6px #8a0000,
+				  3px -3px 0 #8a0000,
+				  -3px -3px 0 #8a0000;
 }
 .login .right {
     font-family: 'Arial', sans-serif;
@@ -37,10 +38,12 @@ ion-content{
     height: 100vh;
 }
 .login .right .rectangle {
-    border-radius: 25px;
-    background: rgba(158,0,0,255);
+    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.17);
+    backdrop-filter: blur(3px);
     padding: 20px;
     margin: 20vh;
+    margin-top: 25vh;
     width: 425px;
     height: 470px; 
     position: relative;
@@ -98,6 +101,25 @@ ion-content{
 .login .right .rectangle a:hover {
     color: rgb(97, 5, 5);
 }
+@media (max-width: 1500px) {
+    .login .left .text {
+        font-style: normal;
+        font-size: 150%;
+        margin-top: 40%;
+        color:rgb(255, 45, 45);
+        text-shadow: #000000 4px 3px;
+    }
+}
+@media (max-width: 1000px) {
+    .login .left .text {
+        font-style: normal;
+        font-size: 100%;
+        margin-top: 40%;
+        color:rgb(255, 45, 45);
+        text-shadow: #000000 4px 3px;
+    }
+}
+
 @media (max-width: 400px) {
     .login .left {
         width: 100%;
