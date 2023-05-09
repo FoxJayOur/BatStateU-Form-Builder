@@ -25,7 +25,7 @@ export class LoginPage implements OnInit {
       email: this.email,
       password: this.password
     }
-    this.http.post('http://localhost:8080/api/formanaAuth/login', credentials)
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/login', credentials)
     .subscribe(res =>{
       localStorage.setItem('user', JSON.stringify(res))
       this.router.navigateByUrl('/news', {replaceUrl: true})

@@ -51,7 +51,7 @@
                       Find<ion-ripple-effect></ion-ripple-effect></button>
                     </div>
                     <div class="ion-activatable ripple-parent rectangle" style="border: none;">
-                      <button type="button" (click)="myGeeks(j)" style="background-color: rgb(202, 36, 36);
+                      <button type="button" (click)="myGeeks()" style="background-color: rgb(202, 36, 36);
                       border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
                       Answer<ion-ripple-effect></ion-ripple-effect></button>
                     </div>
@@ -75,7 +75,7 @@
                       Find<ion-ripple-effect></ion-ripple-effect></button>
                     </div>
                     <div class="ion-activatable ripple-parent rectangle" style="border: none;">
-                      <button type="button" (click)="myGeeks2(j)" style="background-color: rgb(202, 36, 36);
+                      <button type="button" (click)="myGeeks2()" style="background-color: rgb(202, 36, 36);
                       border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
                       Answer<ion-ripple-effect></ion-ripple-effect></button>
                     </div>
@@ -99,7 +99,7 @@
                       Find<ion-ripple-effect></ion-ripple-effect></button>
                     </div>
                     <div class="ion-activatable ripple-parent rectangle" style="border: none;">
-                      <button type="button" (click)="myGeeks3(j)" style="background-color: rgb(202, 36, 36);
+                      <button type="button" (click)="myGeeks3()" style="background-color: rgb(202, 36, 36);
                       border-radius: 35px; width: 100%; height: 47px; margin-top: 25px;">
                       Answer<ion-ripple-effect></ion-ripple-effect></button>
                     </div>
@@ -109,7 +109,7 @@
             </ion-content>
           </ng-template>
         </ion-modal>
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" #f="ngForm">
       <div class="form-group">
         <label for="title" style="color: black;">Form Title <span> by </span></label><br>
         <input type="text"
@@ -127,7 +127,7 @@
         <label for="" id="description" style="color: black; width: 70%;"></label>
       </div>
       <div formArrayName="questions">
-        <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions').controls; let i=index">
+        <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions')['controls']; let i=index">
           <fieldset>
             <legend><h4 style="color: black;">
             </h4></legend>
@@ -149,7 +149,7 @@
               <div class="form-inline">
                 <div class="form-group">
                   <div formArrayName="comments">
-                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments').controls; let j=index">
+                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments')['controls']; let j=index">
                       <div [formGroupName]="j">
                         <div class="form-group">
                         <label id="commentLbl" style="color: black;" style="margin-right:5px;" class="col-form-label" for="emailId" style="color: black;">Answer {{j + 1}}</label><br>
@@ -172,7 +172,7 @@
         </div>
       </div>
       <div formArrayName="questions2" id="questions2">
-        <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions2').controls; let i=index">
+        <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions2')['controls']; let i=index">
           <fieldset>
             <legend><h4 style="color: black;">
             </h4></legend>
@@ -194,7 +194,7 @@
               <div class="form-inline">
                 <div class="form-group">
                   <div formArrayName="comments">
-                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments').controls; let j=index">
+                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments')['controls']; let j=index">
                       <div [formGroupName]="j">
                         <div class="form-group">
                         <label id="commentLbl" style="color: black;" style="margin-right:5px;" class="col-form-label" for="emailId" style="color: black;">Option {{j + 1}}</label><br>
@@ -211,7 +211,7 @@
                     </div>
                   </div>
                   <div formArrayName="comments2">
-                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments2').controls; let j=index">
+                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments2')['controls']; let j=index">
                       <div [formGroupName]="j">
                         <div class="form-group">
                         <label style="color: black;" style="margin-right:5px;" class="col-form-label" for="emailId" style="color: black;">Answer {{j + 1}}</label><br>
@@ -240,7 +240,7 @@
         </div>
       </div>
       <div formArrayName="questions3">
-        <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions3').controls; let i=index">
+        <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions3')['controls']; let i=index">
           <fieldset>
             <legend><h4 style="color: black;">
     </h4></legend>
@@ -263,7 +263,7 @@
               <div class="form-inline">
                 <div class="form-group">
                   <div formArrayName="comments">
-                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments').controls; let j=index">
+                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments')['controls']; let j=index">
                       <div [formGroupName]="j">
                         <div class="form-group">
                         <label style="color: black;" style="margin-right:5px;" class="col-form-label" for="emailId" style="color: black;">Answer {{j + 1}}</label><br>

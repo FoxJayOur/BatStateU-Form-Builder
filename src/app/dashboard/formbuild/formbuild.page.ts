@@ -210,7 +210,7 @@ export class FormbuildPage implements OnInit {
   pass(){
     console.log(this.myForm.value)
     const userData = this.myForm.value
-    this.http.post('http://localhost:8080/api/formanaAuth/input', userData)
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/input', userData)
     .subscribe(res =>{
       localStorage.setItem('data', JSON.stringify(res))
       this.router.navigateByUrl('/dashboard', {replaceUrl: true})
@@ -224,7 +224,7 @@ export class FormbuildPage implements OnInit {
   pass2(){
     console.log(this.myForm.value)
     const userData = this.myForm.value
-    this.http.post('http://localhost:8080/api/formanaAuth/input2', userData)
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/input2', userData)
     .subscribe(res =>{
       localStorage.setItem('data2', JSON.stringify(res))
       this.router.navigateByUrl('/dashboard', {replaceUrl: true})
@@ -238,7 +238,7 @@ export class FormbuildPage implements OnInit {
   pass3(){
     console.log(this.myForm.value)
     const userData = this.myForm.value
-    this.http.post('http://localhost:8080/api/formanaAuth/input3', userData)
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/input3', userData)
     .subscribe(res =>{
       localStorage.setItem('data3', JSON.stringify(res))
       this.router.navigateByUrl('/dashboard', {replaceUrl: true})

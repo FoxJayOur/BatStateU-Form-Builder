@@ -21,7 +21,7 @@ export class ViewformsPage implements OnInit {
   }
   
   viewForms() {
-    this.http.get('http://localhost:8080/api/formanaAuth/ListOfForms')
+    this.http.get('https://formana.azurewebsites.net//api/formanaAuth/ListOfForms')
     .subscribe(req =>{
       localStorage.getItem('data')
       console.log(req)
@@ -35,7 +35,7 @@ export class ViewformsPage implements OnInit {
       wtitle: this.wtitle
     }
 
-    this.http.post('http://localhost:8080/api/formanaAuth/title', titleCreds)
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/title', titleCreds)
     .subscribe(res => {
       localStorage.setItem('data', JSON.stringify(res))
       this.presentAlert('Form Exists', 'Proceed to answer form')
@@ -51,7 +51,7 @@ export class ViewformsPage implements OnInit {
       wtitle: this.wtitle
     }
 
-    this.http.post('http://localhost:8080/api/formanaAuth/title2', titleCreds)
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/title2', titleCreds)
     .subscribe(res => {
       localStorage.setItem('data2', JSON.stringify(res))
       this.presentAlert('Form Exists', 'Proceed to answer form')
@@ -67,7 +67,7 @@ export class ViewformsPage implements OnInit {
       wtitle: this.wtitle
     }
 
-    this.http.post('http://localhost:8080/api/formanaAuth/title3', titleCreds)
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/title3', titleCreds)
     .subscribe(res => {
       localStorage.setItem('data3', JSON.stringify(res))
       this.presentAlert('Form Exists', 'Proceed to answer form')
@@ -81,7 +81,7 @@ export class ViewformsPage implements OnInit {
 
   viewTitle(): string {
 
-    this.http.get('http://localhost:8080/api/formanaAuth/title')
+    this.http.get('https://formana.azurewebsites.net//api/formanaAuth/title')
     .subscribe(req =>{
       localStorage.getItem('data')
       this.title = req.toString()
@@ -98,7 +98,7 @@ export class ViewformsPage implements OnInit {
         = this.wtitle;
   }
   viewQuestions() {
-    this.http.get('http://localhost:8080/api/formanaAuth/ListOfForms')
+    this.http.get('https://formana.azurewebsites.net//api/formanaAuth/ListOfForms')
     .subscribe(req =>{
       localStorage.setItem('data', JSON.stringify(req))
       console.log(req)
@@ -107,7 +107,7 @@ export class ViewformsPage implements OnInit {
     })
   }
   viewComments() {
-    this.http.get('http://localhost:8080/api/formanaAuth/ListOfForms')
+    this.http.get('https://formana.azurewebsites.net//api/formanaAuth/ListOfForms')
     .subscribe(req =>{
       localStorage.setItem('data', JSON.stringify(req))
       console.log(req)

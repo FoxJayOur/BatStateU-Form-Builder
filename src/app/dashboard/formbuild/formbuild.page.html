@@ -26,7 +26,7 @@
     </div>
   </div>
   <div class="formCreate">
-    <form [formGroup]="myForm" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" #f="ngForm">
       <div class="buttonlayout">
         <div class="above">
           <h1>Create Form</h1>
@@ -86,7 +86,7 @@
               required>
       </div>
       <div formArrayName="questions">
-        <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions').controls; let i=index">
+        <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions')['controls']; let i=index">
           <fieldset>
             <legend><h4 style="color: black;">Question:<button style="margin-left:35px;" type="button" class="btn btn-danger" (click)="deleteQuestion(i)">
     <span class="glyphicon glyphicon-minus"aria-hidden="true"></span> Remove Question
@@ -114,7 +114,7 @@
               <div class="form-inline">
                 <div class="form-group">
                   <div formArrayName="comments">
-                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments').controls; let j=index">
+                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments')['controls']; let j=index">
                       <div [formGroupName]="j">
                         <div class="form-group">
                         <label style="color: black;" style="margin-right:5px;" class="col-form-label" for="emailId" style="color: black;">Answer {{j + 1}}</label><br>
@@ -143,7 +143,7 @@
         </div>
       </div>
       <div formArrayName="questions2">
-        <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions2').controls; let i=index">
+        <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions2')['controls']; let i=index">
           <fieldset>
             <legend><h4 style="color: black;">Question:<button style="margin-left:35px;" type="button" class="btn btn-danger" (click)="deleteQuestion2(i)">
     <span class="glyphicon glyphicon-minus"aria-hidden="true"></span> Remove Question
@@ -171,7 +171,7 @@
               <div class="form-inline">
                 <div class="form-group">
                   <div formArrayName="comments">
-                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments').controls; let j=index">
+                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments')['controls']; let j=index">
                       <div [formGroupName]="j">
                         <div class="form-group">
                         <label style="color: black;" style="margin-right:5px;" class="col-form-label" for="emailId" style="color: black;">Option {{j + 1}}</label><br>
@@ -200,7 +200,7 @@
 
 
                   <div formArrayName="comments2">
-                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments2').controls; let j=index">
+                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments2')['controls']; let j=index">
                       <div [formGroupName]="j">
                         <div class="form-group">
                         <label style="color: black;" style="margin-right:5px;" class="col-form-label" for="emailId" style="color: black;">Answer {{j + 1}}</label><br>
@@ -234,7 +234,7 @@
         </div>
       </div>
       <div formArrayName="questions3">
-        <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions3').controls; let i=index">
+        <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions3')['controls']; let i=index">
           <fieldset>
             <legend><h4 style="color: black;">Question:<button style="margin-left:35px;" type="button" class="btn btn-danger" (click)="deleteQuestion3(i)">
     <span class="glyphicon glyphicon-minus"aria-hidden="true"></span> Remove Question
@@ -262,7 +262,7 @@
               <div class="form-inline">
                 <div class="form-group">
                   <div formArrayName="comments">
-                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments').controls; let j=index">
+                    <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let lines of question.get('comments')['controls']; let j=index">
                       <div [formGroupName]="j">
                         <div class="form-group">
                         <label style="color: black;" style="margin-right:5px;" class="col-form-label" for="emailId" style="color: black;">Answer {{j + 1}}</label><br>
