@@ -31,7 +31,7 @@ export class RegisterPage implements OnInit {
   ngOnInit() {
   }
   
-  getOTP() {
+  async getOTP() {
     this.presentAlert('OTP STATUS', "Please wait, OTP is being delivered to your electronic email! Stay with us!")
 
     let body = {
@@ -52,11 +52,12 @@ export class RegisterPage implements OnInit {
       this.status = res[Key]
       this.message = res[Key2]
       this.userId = keyTrial[Key4]
-      this.presentAlert('OTP STATUS', (this.status + ": " + this.message))
     }, error =>{
       console.log(error)
       this.presentAlert('Register Failed', 'Wrong information filled out')
     })
+    await new Promise(f => setTimeout(f, 2000));
+    this.presentAlert('OTP STATUS', (this.status + ": " + this.message))
     console.log("getOTP RAN")
     console.log(body)
   }
