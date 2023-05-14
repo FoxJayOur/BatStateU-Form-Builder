@@ -120,7 +120,8 @@ ion-content{
 }
 .body .features .features-content .feats{
     width: 20%;
-    background: #222;
+    background: rgba(0, 0, 0, 0.479);
+    backdrop-filter: blur(3px);
     text-align: center;
     border-radius: 6px;
     padding-top: 10%; padding-bottom: 5%;
@@ -148,12 +149,12 @@ ion-content{
     color:#810c0c;
 }
 .body .features .features-content .text {
-    color: #fff;
+    color: #ffffff;
     font-weight: 500;
     margin: 10px 0 7px 0;
 }
 .body .features .features-content .text button{
-    background-color: rgb(70, 70, 234);
+    background-color: #810c0c;
     border-radius: 8px;
     height: 25px; width: 120px;
 }

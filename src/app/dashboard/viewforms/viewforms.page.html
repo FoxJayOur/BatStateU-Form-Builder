@@ -12,8 +12,14 @@
         <a href="#" [routerLink]="['/dashboard']">DASHBOARD</a>
       </div>
         <ul class = "opt">
-          <li><a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
-          <li><a href="#" [routerLink]="['/login']"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+          <li><a href="#" id="hover-trigger"><i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+          <li><a href="#" [routerLink]="['/login']"><i class="fa fa-sign-out" aria-hidden="true">
+            <ion-popover trigger="hover-trigger" triggerAction="hover">
+              <ng-template>
+                <ion-content class="ion-padding" style="color: black">EMAIL NOTIFICATIONS! TO BE UPDATED!</ion-content>
+              </ng-template>
+            </ion-popover>
+          </i></a></li>
         </ul>
           <div class ="opt-btn">
             <i class="fa fa-bars"></i>
@@ -32,7 +38,7 @@
             <a href="#" [routerLink]="['/dashboard/viewforms']">View All Forms</a><br>
         </div>
         <div class="viewRatings">
-            <a href="#" [routerLink]="['/dashboard/viewratings']">View Ratings</a>
+            <a href="#" [routerLink]="['/dashboard/viewratings']">Add Ratings/Support</a>
         </div>
     </div>
     <div class="features">

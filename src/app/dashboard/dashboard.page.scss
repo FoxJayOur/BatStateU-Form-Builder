@@ -97,6 +97,11 @@ ion-content{
 .body .left a:hover{
     color: #560000;
 }
+.body .right .hotdog{
+    float: right;
+    width: 75%;
+    background-color: #fff;
+}
 @media (max-width: 1300px) {
     .home .maxwidth{
         margin-left: 0px;

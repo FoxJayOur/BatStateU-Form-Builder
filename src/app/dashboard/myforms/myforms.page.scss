@@ -63,6 +63,33 @@ ion-content{
     transition: color 0.3 ease;
     text-decoration: none;
 }
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #fff;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    color: rgb(0, 0, 0);
+  }
+  th {
+    font-size: 21px;
+    background-color: rgb(27, 27, 27);
+    color: white;
+  }
+  td {
+    background-color: transparent;
+    font-size: 12px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: transparent;
+    font-size: 7px;
+    color: rgb(0, 0, 0);
+  }
 .navitab .opt li a:hover{
     color: #560000;
     text-decoration: none;
@@ -96,6 +123,11 @@ ion-content{
 }
 .body .left a:hover{
     color: #560000;
+}
+.body .right {
+    width: 75%;
+    margin-top: 4.6%;
+    float: right;
 }
 @media (max-width: 1300px) {
     .home .maxwidth{

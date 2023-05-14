@@ -97,6 +97,68 @@ ion-content{
 .body .left a:hover{
     color: #560000;
 }
+.body .right {
+    width: 75%;
+    height: 100%;
+    float: right;
+}
+.body .features{
+    width: 100%;
+    float: right;
+    height: auto;
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+}
+.body .features .features-content{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: unset;
+    flex-wrap: wrap;
+}
+.body .features .features-content .feats{
+    margin-right: 3%;
+}
+.body .features .title::before{
+    background: rgb(0, 0, 0);
+}
+.body .features .title::after{
+    content: "what we provide";
+    background: none;
+}
+.body .features .features-content .feats{
+    width: 100%;
+    height: 40%;
+    background: rgba(0, 0, 0, 0.479);
+    backdrop-filter: blur(3px);
+    text-align: center;
+    border-radius: 6px;
+    padding-top: 10%; padding-bottom: 5%;
+    margin-top: 100px; margin-left: 15%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.body .features .features-content .feats .box{
+    transition: all 0.3s ease;
+}
+.body .features .features-content .feats:hover{
+    background:#810c0c;
+}
+.body .features .features-content .feats:hover i{
+    color: #fff;
+}
+.body .features .features-content .feats:hover .box {
+    transform: scale(1.05);
+}
+.body .features .features-content .feats i{
+    font-size: 50px;
+    color:#810c0c;
+}
+.body .features .features-content .text {
+    color: #fff;
+    font-weight: 500;
+    margin: 10px 0 7px 0;
+}
 @media (max-width: 1300px) {
     .home .maxwidth{
         margin-left: 0px;

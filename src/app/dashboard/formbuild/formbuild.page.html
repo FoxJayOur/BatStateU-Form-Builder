@@ -12,8 +12,14 @@
         <a href="#" [routerLink]="['/dashboard']">DASHBOARD</a>
       </div>
         <ul class = "opt">
-          <li><a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
-          <li><a href="#" [routerLink]="['/login']"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+          <li><a href="#" id="hover-trigger"><i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+          <li><a href="#" [routerLink]="['/login']"><i class="fa fa-sign-out" aria-hidden="true">
+            <ion-popover trigger="hover-trigger" triggerAction="hover">
+              <ng-template>
+                <ion-content class="ion-padding" style="color: black">EMAIL NOTIFICATIONS! TO BE UPDATED!</ion-content>
+              </ng-template>
+            </ion-popover>
+          </i></a></li>
         </ul>
           <div class ="opt-btn">
             <i class="fa fa-bars"></i>
@@ -88,8 +94,8 @@
       <div formArrayName="questions">
         <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions')['controls']; let i=index">
           <fieldset>
-            <legend><h4 style="color: black;">Question:<button style="margin-left:35px;" type="button" class="btn btn-danger" (click)="deleteQuestion(i)">
-    <span class="glyphicon glyphicon-minus"aria-hidden="true"></span> Remove Question
+            <legend><h4 style="color: black;">Question:<button type="button" style="background-color: rgb(180, 0, 0); padding: 3px; border-radius: 7px; margin-left: 10px;" (click)="deleteQuestion(i)">
+              <i class="fa fa-trash" aria-hidden="true"></i>
     </button>
     </h4></legend>
             <div [formGroupName]="i">
@@ -145,8 +151,8 @@
       <div formArrayName="questions2">
         <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions2')['controls']; let i=index">
           <fieldset>
-            <legend><h4 style="color: black;">Question:<button style="margin-left:35px;" type="button" class="btn btn-danger" (click)="deleteQuestion2(i)">
-    <span class="glyphicon glyphicon-minus"aria-hidden="true"></span> Remove Question
+            <legend><h4 style="color: black;">Question:<button type="button" style="background-color: rgb(180, 0, 0); padding: 3px; border-radius: 7px; margin-left: 10px;" (click)="deleteQuestion2(i)">
+              <i class="fa fa-trash" aria-hidden="true"></i>
     </button>
     </h4></legend>
             <div [formGroupName]="i">
@@ -236,8 +242,8 @@
       <div formArrayName="questions3">
         <div style="margin-top:5px; margin-bottom:5px;" *ngFor="let question of myForm.get('questions3')['controls']; let i=index">
           <fieldset>
-            <legend><h4 style="color: black;">Question:<button style="margin-left:35px;" type="button" class="btn btn-danger" (click)="deleteQuestion3(i)">
-    <span class="glyphicon glyphicon-minus"aria-hidden="true"></span> Remove Question
+            <legend><h4 style="color: black;">Question:<button type="button" style="background-color: rgb(180, 0, 0); padding: 3px; border-radius: 7px; margin-left: 10px;" (click)="deleteQuestion3(i)">
+              <i class="fa fa-trash" aria-hidden="true"></i>
     </button>
     </h4></legend>
             <div [formGroupName]="i">
@@ -252,9 +258,10 @@
                         formControlName="question" 
                         style="margin-right:5px; width: 40%;" 
                         required>
-                  <button style="margin-right:5px;"  type="button" class="btn btn-success btn-sm" (click)="addNewComment3(question.controls.comments)">
+                  <button style="margin-left: 1%;" type="button" class="btn btn-success btn-sm" (click)="addNewComment3(question.controls.comments)">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Answer
                   </button>
+                  <i class="fa fa-car"></i>
                   
 
                 </div>

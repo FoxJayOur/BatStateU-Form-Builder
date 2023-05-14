@@ -25,6 +25,7 @@ export class RegisterPage implements OnInit {
   message: string
   userId: object
   stats: boolean = false
+  stats2: string
 
   constructor(private http: HttpClient, private router: Router, private alertController: AlertController) { }
 
@@ -55,6 +56,7 @@ export class RegisterPage implements OnInit {
     }, error =>{
       console.log(error)
       this.presentAlert('Register Failed', 'Wrong information filled out')
+      this.stats2 = this.email
     })
     await new Promise(f => setTimeout(f, 2000));
     this.presentAlert('OTP STATUS', (this.status + ": " + this.message))
@@ -109,7 +111,7 @@ export class RegisterPage implements OnInit {
         }
       }
     }
-    if (this.stats == true) {
+    if (this.stats == true && this.stats2 == this.email) {
       this.http.post('https://formana.azurewebsites.net//api/formanaAuth/register', user)
       .subscribe(res =>{
         localStorage.setItem('user', JSON.stringify(res))

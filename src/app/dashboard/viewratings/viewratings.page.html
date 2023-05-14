@@ -12,8 +12,14 @@
         <a href="#" [routerLink]="['/dashboard']">DASHBOARD</a>
       </div>
         <ul class = "opt">
-          <li><a href="#"><i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
-          <li><a href="#" [routerLink]="['/login']"><i class="fa fa-user" aria-hidden="true"></i></a></li>
+          <li><a href="#" id="hover-trigger"><i class="fa fa-bell-o" aria-hidden="true"></i></a></li>
+          <li><a href="#" [routerLink]="['/login']"><i class="fa fa-sign-out" aria-hidden="true">
+            <ion-popover trigger="hover-trigger" triggerAction="hover">
+              <ng-template>
+                <ion-content class="ion-padding" style="color: black">EMAIL NOTIFICATIONS! TO BE UPDATED!</ion-content>
+              </ng-template>
+            </ion-popover>
+          </i></a></li>
         </ul>
           <div class ="opt-btn">
             <i class="fa fa-bars"></i>
@@ -21,6 +27,15 @@
     </div>
   </nav>
   <div class="body">
+    <ion-modal trigger="open-modal">
+      <ng-template>
+        <ion-content class="ion-padding">
+          <label for="feedback">Write your suggestions for a better web here!</label>
+          <ion-textarea [(ngModel)]="suggestions" id="suggestions" style="background-color: rgb(243, 243, 243); border-radius: 8px; margin-top: 15px; color: black; height: 50%;"></ion-textarea>
+          <button type="submit" (click)="addSuggestions">Submit</button>
+        </ion-content>
+      </ng-template>
+    </ion-modal>
     <div class="column left">
         <div class="myForms">
             <a href="#" [routerLink]="['/dashboard/myforms']">My Forms</a><br>
@@ -32,8 +47,30 @@
             <a href="#" [routerLink]="['/dashboard/viewforms']">View All Forms</a><br>
         </div>
         <div class="viewRatings">
-            <a href="#" [routerLink]="['/dashboard/viewratings']">View Ratings</a>
+            <a href="#" [routerLink]="['/dashboard/viewratings']">Add Ratings/Support</a>
         </div>
+    </div>
+    <div class="column right">
+      <div class="features">
+        <div class="features-content">
+          <div class="feats">
+            <a id="open-modal" style="text-decoration: none;">
+            <div class="box" id="open-mdoal">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <div class="text">Customer Feedback/Suggestion Box</div>
+            </div>
+            </a>
+          </div>
+          <div class="feats">
+            <a href="#" style="text-decoration: none;">
+            <div class="box">
+              <i class="fa fa-archive"></i>
+              <div class="text">App Support</div>
+            </div>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </ion-content>

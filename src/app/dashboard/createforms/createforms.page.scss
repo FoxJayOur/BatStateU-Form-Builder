@@ -123,7 +123,8 @@ ion-content{
 }
 .body .features .features-content .feats{
     width: 20%;
-    background: #222;
+    background: rgba(0, 0, 0, 0.479);
+    backdrop-filter: blur(3px);
     text-align: center;
     border-radius: 6px;
     padding-top: 10%; padding-bottom: 5%;
