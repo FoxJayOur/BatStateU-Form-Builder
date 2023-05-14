@@ -22,7 +22,7 @@ export class ViewratingsPage implements OnInit {
   
     console.log("Hatdog")
     console.log(body)
-    this.http.post('http://localhost:8080/api/formanaAuth/addSuggestions', body)
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/addSuggestions', body)
     .subscribe(res =>{
       localStorage.getItem('suggestions')
       console.log(res)

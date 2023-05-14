@@ -126,6 +126,12 @@ ion-content{
     content: "what we provide";
     background: none;
 }
+.body button{
+    padding: 25px; margin: 8px; border-radius: 8px; background-color: rgb(182, 0, 0);
+}
+.body button #feedback:hover {
+    background-color: #13a4e7;
+}
 .body .features .features-content .feats{
     width: 100%;
     height: 40%;

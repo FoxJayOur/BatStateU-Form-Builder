@@ -32,7 +32,7 @@
         <ion-content class="ion-padding">
           <label for="feedback">Write your suggestions for a better web here!</label>
           <ion-textarea [(ngModel)]="suggestions" id="suggestions" style="background-color: rgb(243, 243, 243); border-radius: 8px; margin-top: 15px; color: black; height: 50%;"></ion-textarea>
-          <button type="submit" (click)="addSuggestions">Submit</button>
+          <button type="submit" (click)="addSuggestions()" id="feedback">Submit</button>
         </ion-content>
       </ng-template>
     </ion-modal>
