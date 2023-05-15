@@ -53,12 +53,12 @@ ion-content{
     border-radius: 5px;
     color: #3d0404;
 }
-.formCreate .buttonlayout .below #butt {
+.formCreate .buttonlayout .below #butt, .formCreate .buttonlayout .below #butt2, .formCreate .buttonlayout .below #butt3 {
     float: left;
     background-color: red; width: 17%;
     margin-left: 5%; margin-top: 3%;
 }
-.formCreate .buttonlayout .below #butt i {
+.formCreate .buttonlayout .below #butt i, .formCreate .buttonlayout .below #butt2 i, .formCreate .buttonlayout .below #butt3 i {
     font-size: 30px;
 }
 .maxwidth {

@@ -62,11 +62,11 @@ export class FormbuildPage implements OnInit {
       questions2: this.fb.array([]),
       questions3: this.fb.array([]),
       approvedBy: [''],
-    })
 
+    })
     this.setQuestions();
     this.setQuestions2();
-    this.setQuestions3();
+    this.setQuestions3()
   }
 
   onSubmit() {
@@ -122,10 +122,18 @@ export class FormbuildPage implements OnInit {
       }))
   }
   addNewComment2(control) {
-    control.push(
-      this.fb.group({
-        comment: ['']
-      }))
+    let counter3 = control.length
+    console.log(counter3)
+    if (counter3 <= 3) {
+      control.push(
+        this.fb.group({
+          comment: ['']
+        }))
+        counter3 = counter3 + 1
+    }
+    else {
+      this.presentAlert("ERROR:", "Maximum Options Reached")
+    }
   }
   addNewComment3(control) {
     control.push(
