@@ -48,10 +48,10 @@
           <th>CEAFA</th>
           <th>FACULTY</th>
         </tr>
-        <tr *ngFor="let lines of temptitleObj; let z=index">
-          <td>{{title1[z]}}<br><br>{{expiryDate1[z]}}</td>
-          <td>{{title2[z]}}<br><br>{{expiryDate2[z]}}</td>
-          <td>{{title3[z]}}<br><br>{{expiryDate3[z]}}</td>
+        <tr *ngFor="let lines of finalTitleObj; let z=index">
+          <td>{{title1[z]}}<br><br>{{expiryDate1[z]}}<br><button (click)="deleteDocument(title1[z])">Delete</button></td>
+          <td>{{title2[z]}}<br><br>{{expiryDate2[z]}}<br><button (click)="deleteDocument2(title2[z])">Delete</button></td>
+          <td>{{title3[z]}}<br><br>{{expiryDate3[z]}}<br><button (click)="deleteDocument3(title3[z])">Delete</button></td>
         </tr>
       </table>
     </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-myforms',
@@ -18,9 +19,9 @@ export class MyformsPage implements OnInit {
   expiryDate1: string [] = []
   expiryDate2: string [] = []
   expiryDate3: string [] = []
+  finalTitleObj: any[] = []
 
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private alertController: AlertController) {
     this.viewForms()
   }
 
@@ -40,6 +41,18 @@ export class MyformsPage implements OnInit {
       this.temptitleObj2 = req[Key1]
       const Key2 = 'formData3All' as ObjectKey
       this.temptitleObj3 = req[Key2]
+      if ((Object.keys(this.temptitleObj).length) >= (Object.keys(this.temptitleObj2).length) && (Object.keys(this.temptitleObj).length) >= (Object.keys(this.temptitleObj3).length)) {
+        this.finalTitleObj = this.temptitleObj
+      }
+      else if ((Object.keys(this.temptitleObj2).length) >= (Object.keys(this.temptitleObj).length) && (Object.keys(this.temptitleObj2).length) >= (Object.keys(this.temptitleObj3).length)) {
+        this.finalTitleObj = this.temptitleObj2
+      }
+      else if ((Object.keys(this.temptitleObj3).length) >= (Object.keys(this.temptitleObj).length) && (Object.keys(this.temptitleObj3).length) >= (Object.keys(this.temptitleObj2).length)) {
+        this.finalTitleObj = this.temptitleObj3
+      }
+      else {
+        console.log("Error: Can't find the greatest")
+      }
       for (let i = 0; i < Object.keys(this.temptitleObj).length; i++) {
         console.log("Error")
         if (this.temptitleObj[i].title == null) {
@@ -89,10 +102,72 @@ export class MyformsPage implements OnInit {
           console.log(this.title3[i])
         }
       }
+      console.log(Object.keys(this.finalTitleObj).length)
       console.log(Object.keys(this.temptitleObj).length)
-      console.log(this.temptitleObj[0].name)
+      console.log(Object.keys(this.temptitleObj2).length)
+      console.log(Object.keys(this.temptitleObj3).length)
     }, error =>{
        console.log(error)
     })
+  }
+  async deleteDocument(nameTitle){
+    let name = {
+      nameTitle
+    }
+
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/deleteDocument', name)
+    .subscribe(res =>{
+      localStorage.setItem('data', JSON.stringify(res))
+      console.log(res)
+      this.presentAlert("FORM STATUS:", "Document has been deleted")
+    }, error =>{
+      console.log(error)
+    })
+    await new Promise(f => setTimeout(f, 1000));
+    location.reload()
+  }
+  async deleteDocument2(nameTitle){
+    let name = {
+      nameTitle
+    }
+
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/deleteDocument2', name)
+    .subscribe(res =>{
+      localStorage.setItem('data2', JSON.stringify(res))
+      console.log(res)
+      this.presentAlert("FORM STATUS:", "Document has been deleted")
+    }, error =>{
+      console.log(error)
+    })
+    await new Promise(f => setTimeout(f, 1000));
+    location.reload()
+  }
+  async deleteDocument3(nameTitle){
+    let name = {
+      nameTitle
+    }
+
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/deleteDocument3', name)
+    .subscribe(res =>{
+      localStorage.setItem('data3', JSON.stringify(res))
+      console.log(res)
+      this.presentAlert("FORM STATUS:", "Document has been deleted")
+    }, error =>{
+      console.log(error)
+    })
+    await new Promise(f => setTimeout(f, 1000));
+    location.reload()
+  }
+  async presentAlert(header: string, message: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: header,
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    
   }
 }
