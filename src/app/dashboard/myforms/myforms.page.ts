@@ -158,6 +158,52 @@ export class MyformsPage implements OnInit {
     await new Promise(f => setTimeout(f, 1000));
     location.reload()
   }
+  viewAnswers(nameTitle){
+    let name = {
+      nameTitle
+    }
+    let replacer = ['findAnswers', 'title', 'questions', 'question', 'comments', 'comment']
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/viewAnswersForms', name)
+    .subscribe(res =>{
+      localStorage.setItem('answers', JSON.stringify(res))
+      console.log(res)
+      this.presentAlert("FORM ANSWERS RAW:", (JSON.stringify(res, replacer, ".          ")))
+    }, error =>{
+      console.log(error)
+    })
+
+  }
+  viewAnswers2(nameTitle){
+    let name = {
+      nameTitle
+    }
+    let replacer = ['findAnswers', 'title', 'questions', 'question', 'comments', 'comment']
+
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/viewAnswersForms2', name)
+    .subscribe(res =>{
+      localStorage.setItem('answers2', JSON.stringify(res))
+      console.log(res)
+      this.presentAlert("FORM ANSWERS RAW:", (JSON.stringify(res, replacer, ".          ")))
+    }, error =>{
+      console.log(error)
+    })
+
+  }
+  viewAnswers3(nameTitle){
+    let name = {
+      nameTitle
+    }
+    let replacer = ['findAnswers', 'title', 'questions', 'question', 'comments', 'comment']
+    this.http.post('https://formana.azurewebsites.net//api/formanaAuth/viewAnswersForms3', name)
+    .subscribe(res =>{
+      localStorage.setItem('answers3', JSON.stringify(res))
+      console.log(res)
+      this.presentAlert("FORM ANSWERS RAW:", (JSON.stringify(res, replacer, ".          ")))
+    }, error =>{
+      console.log(error)
+    })
+
+  }
   async presentAlert(header: string, message: string) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
